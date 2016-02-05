@@ -1,0 +1,8 @@
+1.Develop a tourist plan application with map.
+Focus on map. Users can find place in the map and choose them as their destinations. We provide the open time for the building, if they have and we provide parking information in the description of the place. We can also use search history to save path.
+Solve: a,b,e,h,k,l
+2.Develop a tourist plan application without map.
+Focus on panel and do the same thing with solution 1. Just different GUI.
+3.Most focus on the praking problems because it seems to be the most important problem to be solve.(based on google map API)
+According to the Idea we made before, add more details about nearby, especially in nearby distance search and we can also make some information about school bus here.
+Solve:a,c,g,h,k,l
