@@ -1,0 +1,9 @@
+We can add an extention function in Google map.This function can help us save path.
+
+For example, we can create a map website which similar to google maps. It has basic functions like search place, find path. Then we add a function called save path on the operation panel.
+After we search a path, we can save it in memory, hidden it and show it in the future. Just like the Bing map. We can obtain the path information from Google API and store it temporarily.
+So I think there will be three main funcitons in save path:
+
+1.save path
+2.hidden path
+3.show path
