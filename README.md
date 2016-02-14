@@ -26,8 +26,9 @@ upcoming months.
 For more details click on the [link](https://github.com/arnabsaha1011/mypackse/blob/master/New%20Folder/Survey/Feb%201%20report.pdf)
 
 ## March deliverable:
-Solution 1: 
-Solution 2: Itinerary android application. Click on the [link](https://github.com/asaha1/Itinerary) for details
-Solution 3:
+* Solution 1: 
+* Solution 2: Itinerary android application. Click on the [link](https://github.com/asaha1/Itinerary) for details
+* Solution 3:
+
 
 More details upcoming
