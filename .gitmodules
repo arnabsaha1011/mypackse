@@ -1,0 +1,3 @@
+[submodule "sol2"]
+	path = sol2
+	url = git@github.com:asaha1/Itinerary.git
