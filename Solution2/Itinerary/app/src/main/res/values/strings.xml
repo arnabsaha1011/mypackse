@@ -1,0 +1,7 @@
+<resources>
+    <string name="app_name">Itinerary</string>
+    <string name="title_activity_maps">Map</string>
+    <string name="searchText">Search</string>
+    <string name="addPlace">+</string>
+    <string name="fromPlace">From:</string>
+</resources>
