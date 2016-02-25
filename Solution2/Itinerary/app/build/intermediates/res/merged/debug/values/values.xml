@@ -280,6 +280,7 @@
     <string name="app_name">Itinerary</string>
     <string name="auth_google_play_services_client_facebook_display_name">Facebook</string>
     <string name="auth_google_play_services_client_google_display_name">Google</string>
+    <string name="back">Back</string>
     <string name="cast_notification_connected_message">Connected to <ns1:g id="name">%1$s</ns1:g></string>
     <string name="cast_notification_connecting_message">Connecting to <ns1:g id="name">%1$s</ns1:g></string>
     <string name="cast_notification_disconnect">Disconnect</string>
@@ -315,6 +316,9 @@
     <string name="create_calendar_message">Allow Ad to create a calendar event?</string>
     <string name="create_calendar_title">Create calendar event</string>
     <string name="decline">Decline</string>
+    <string name="edit_text">Edit</string>
+    <string name="end_location">End Location</string>
+    <string name="from">From:</string>
     <string name="fromPlace">From:</string>
     <string name="google_maps_key" templateMergeStrategy="preserve" translatable="false">AIzaSyAsCt7x5hjLAXjTIthjPWC5kkLvnqJSC-g</string>
     <string name="mr_media_route_button_content_description">Cast</string>
@@ -331,6 +335,7 @@
     <string name="place_autocomplete_clear_button">Clear search</string>
     <string name="place_autocomplete_search_hint">Search</string>
     <string name="searchText">Search</string>
+    <string name="start_location">Start Location</string>
     <string name="status_bar_notification_info_overflow">999+</string>
     <string name="store_picture_message">"Allow Ad to store image in Picture gallery?"</string>
     <string name="store_picture_title">Save image</string>

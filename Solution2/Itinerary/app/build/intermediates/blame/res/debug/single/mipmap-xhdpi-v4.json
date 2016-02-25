@@ -10,5 +10,13 @@
     {
         "merged": "C:\\Users\\asaha\\Documents\\mypackse\\Soln2\\Itinerary\\app\\build\\intermediates\\res\\merged\\debug\\mipmap-xhdpi-v4\\ic_launcher.png",
         "source": "C:\\Users\\asaha\\Documents\\mypackse\\Soln2\\Itinerary\\app\\src\\main\\res\\mipmap-xhdpi\\ic_launcher.png"
+    },
+    {
+        "merged": "C:\\Users\\asaha\\Documents\\mypackse\\Solution2\\Itinerary\\app\\build\\intermediates\\res\\merged\\debug\\mipmap-xhdpi-v4\\current_location.png",
+        "source": "C:\\Users\\asaha\\Documents\\mypackse\\Solution2\\Itinerary\\app\\src\\main\\res\\mipmap-xhdpi\\current_location.png"
+    },
+    {
+        "merged": "C:\\Users\\asaha\\Documents\\mypackse\\Solution2\\Itinerary\\app\\build\\intermediates\\res\\merged\\debug\\mipmap-xhdpi-v4\\ic_launcher.png",
+        "source": "C:\\Users\\asaha\\Documents\\mypackse\\Solution2\\Itinerary\\app\\src\\main\\res\\mipmap-xhdpi\\ic_launcher.png"
     }
 ]

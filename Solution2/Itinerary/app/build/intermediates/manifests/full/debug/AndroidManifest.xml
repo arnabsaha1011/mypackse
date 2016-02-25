@@ -46,7 +46,7 @@
             android:value="@string/google_maps_key" />
 
         <activity
-            android:name="com.map.asaha.itinerary.MapsActivity"
+            android:name="com.map.asaha.itinerary.SelectPlacesActivity"
             android:label="@string/title_activity_maps" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -54,6 +54,7 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+        <activity android:name="com.map.asaha.itinerary.MapsActivity" />
         <!-- Include the AdActivity and InAppPurchaseActivity configChanges and themes. -->
         <activity
             android:name="com.google.android.gms.ads.AdActivity"
