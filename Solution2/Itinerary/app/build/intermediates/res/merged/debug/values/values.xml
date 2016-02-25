@@ -320,7 +320,7 @@
     <string name="end_location">End Location</string>
     <string name="from">From:</string>
     <string name="fromPlace">From:</string>
-    <string name="google_maps_key" templateMergeStrategy="preserve" translatable="false">AIzaSyAsCt7x5hjLAXjTIthjPWC5kkLvnqJSC-g</string>
+    <string name="google_maps_key" templateMergeStrategy="preserve" translatable="false">AIzaSyC3TS88nEWgQgzJ6OaJlehtukgFY1flNkU</string>
     <string name="mr_media_route_button_content_description">Cast</string>
     <string name="mr_media_route_chooser_searching">Searching for devices\u2026</string>
     <string name="mr_media_route_chooser_title">Connect to device</string>
