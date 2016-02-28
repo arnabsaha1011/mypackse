@@ -2244,10 +2244,10 @@ containing a value of this type.
         public static final int line3=0x7f0d0091;
         public static final int listMode=0x7f0d000a;
         public static final int list_item=0x7f0d004f;
-        public static final int location=0x7f0d009e;
+        public static final int location=0x7f0d009f;
         public static final int logo_only=0x7f0d003d;
-        public static final int map=0x7f0d0077;
-        public static final int map2=0x7f0d0079;
+        public static final int map=0x7f0d0079;
+        public static final int map2=0x7f0d0077;
         public static final int match_parent=0x7f0d0036;
         public static final int media_actions=0x7f0d008b;
         public static final int media_route_control_frame=0x7f0d007e;
@@ -2261,8 +2261,8 @@ containing a value of this type.
         public static final int none=0x7f0d000f;
         public static final int normal=0x7f0d000b;
         public static final int parentPanel=0x7f0d0054;
-        public static final int place_1=0x7f0d009d;
-        public static final int place_2=0x7f0d009f;
+        public static final int place_1=0x7f0d009e;
+        public static final int place_2=0x7f0d00a0;
         public static final int place_autocomplete_clear_button=0x7f0d0097;
         public static final int place_autocomplete_powered_by_google=0x7f0d0099;
         public static final int place_autocomplete_prediction_primary_text=0x7f0d009b;
@@ -2271,6 +2271,7 @@ containing a value of this type.
         public static final int place_autocomplete_search_button=0x7f0d0095;
         public static final int place_autocomplete_search_input=0x7f0d0096;
         public static final int place_autocomplete_separator=0x7f0d0098;
+        public static final int places_layout=0x7f0d009d;
         public static final int play_pause=0x7f0d0081;
         public static final int production=0x7f0d0030;
         public static final int progress_circular=0x7f0d0006;
@@ -2423,6 +2424,7 @@ containing a value of this type.
         public static final int cast_notification_connected_message=0x7f070045;
         public static final int cast_notification_connecting_message=0x7f070046;
         public static final int cast_notification_disconnect=0x7f070047;
+        public static final int clear_map=0x7f070048;
         public static final int common_google_play_services_api_unavailable_text=0x7f070013;
         public static final int common_google_play_services_enable_button=0x7f070014;
         public static final int common_google_play_services_enable_text=0x7f070015;
@@ -2452,10 +2454,9 @@ containing a value of this type.
         public static final int common_open_on_phone=0x7f07002d;
         public static final int common_signin_button_text=0x7f07002e;
         public static final int common_signin_button_text_long=0x7f07002f;
-        public static final int create_calendar_message=0x7f070048;
-        public static final int create_calendar_title=0x7f070049;
-        public static final int decline=0x7f07004a;
-        public static final int edit_text=0x7f07004b;
+        public static final int create_calendar_message=0x7f070049;
+        public static final int create_calendar_title=0x7f07004a;
+        public static final int decline=0x7f07004b;
         public static final int end_location=0x7f07004c;
         public static final int from=0x7f07004d;
         public static final int fromPlace=0x7f07004e;

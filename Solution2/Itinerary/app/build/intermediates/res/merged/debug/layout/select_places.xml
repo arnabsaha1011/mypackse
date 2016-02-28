@@ -1,4 +1,5 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/places_layout"
     android:layout_width="fill_parent"
     android:layout_height="wrap_content"
     android:orientation="vertical">
@@ -12,8 +13,8 @@
         <Button
             android:layout_width="110dp"
             android:layout_height="wrap_content"
-            android:onClick="onEdit"
-            android:text="@string/edit_text"
+            android:onClick="onClearMap"
+            android:text="@string/clear_map"
             android:layout_marginLeft="5dp"/>
 
         <Button

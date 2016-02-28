@@ -264,9 +264,9 @@ public final class R {
 		public static final int common_open_on_phone = 0x7f07002d;
 		public static final int common_signin_button_text = 0x7f07002e;
 		public static final int common_signin_button_text_long = 0x7f07002f;
-		public static final int create_calendar_message = 0x7f070048;
-		public static final int create_calendar_title = 0x7f070049;
-		public static final int decline = 0x7f07004a;
+		public static final int create_calendar_message = 0x7f070049;
+		public static final int create_calendar_title = 0x7f07004a;
+		public static final int decline = 0x7f07004b;
 		public static final int place_autocomplete_clear_button = 0x7f07003b;
 		public static final int place_autocomplete_search_hint = 0x7f07003c;
 		public static final int store_picture_message = 0x7f070052;
