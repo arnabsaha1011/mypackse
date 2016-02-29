@@ -10,6 +10,7 @@ import android.util.Log;
 import android.view.View;
 import android.view.inputmethod.InputMethodManager;
 import android.widget.EditText;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.google.android.gms.maps.CameraUpdateFactory;
@@ -37,7 +38,7 @@ public class MapsActivity extends FragmentActivity {
     GoogleMap map;
     ArrayList<LatLng> markerPoints;
 
-    //TextView tvDistanceDuration;
+    TextView tvDistanceDuration;
 
 
     @Override
@@ -45,7 +46,7 @@ public class MapsActivity extends FragmentActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_maps);
 
-       // tvDistanceDuration = (TextView) findViewById(R.id.place);
+        tvDistanceDuration = (TextView) findViewById(R.id.place);
 
         // Initializing
         markerPoints = new ArrayList<LatLng>();
@@ -56,8 +57,9 @@ public class MapsActivity extends FragmentActivity {
         // Getting Map for the SupportMapFragment
         map = fm.getMap();
 
+
         // Enable MyLocation Button in the Map
-   //     map.setMyLocationEnabled(true);
+        //     map.setMyLocationEnabled(true);
 
         // Setting onclick event listener for the map
         map.setOnMapClickListener(new GoogleMap.OnMapClickListener() {
@@ -65,7 +67,7 @@ public class MapsActivity extends FragmentActivity {
             @Override
             public void onMapClick(LatLng point) {
 
-                // Already two locations
+
             /*    if (markerPoints.size() > 1) {
                     markerPoints.clear();
                     map.clear();
@@ -87,7 +89,7 @@ public class MapsActivity extends FragmentActivity {
                  */
                 if (markerPoints.size() == 1) {
                     options.icon(BitmapDescriptorFactory.defaultMarker(BitmapDescriptorFactory.HUE_GREEN));
-                } else if (markerPoints.size() >1 ) {
+                } else if (markerPoints.size() > 1) {
                     options.icon(BitmapDescriptorFactory.defaultMarker(BitmapDescriptorFactory.HUE_RED));
                 }
 
@@ -126,7 +128,7 @@ public class MapsActivity extends FragmentActivity {
             // Add new marker to the Google Map Android API V2
             if (markerPoints.size() == 1) {
                 options.icon(BitmapDescriptorFactory.defaultMarker(BitmapDescriptorFactory.HUE_GREEN));
-            } else if (markerPoints.size() >1 ) {
+            } else if (markerPoints.size() > 1) {
                 options.icon(BitmapDescriptorFactory.defaultMarker(BitmapDescriptorFactory.HUE_RED));
             }
 
@@ -146,7 +148,6 @@ public class MapsActivity extends FragmentActivity {
         EditText place_2 = (EditText) findViewById(R.id.place);
         place_2.setText("");
     }
-
 
 
     public void onDirection(View v) {
@@ -262,6 +263,7 @@ public class MapsActivity extends FragmentActivity {
 
             // Invokes the thread for parsing the JSON data
             parserTask.execute(result);
+            //finish();
         }
     }
 
@@ -336,10 +338,14 @@ public class MapsActivity extends FragmentActivity {
                 lineOptions.color(Color.GREEN);
             }
 
-            //tvDistanceDuration.setText("Distance:" + distance + ", Duration:" + duration);
+            tvDistanceDuration.setText("Distance:" + distance + ", Duration:" + duration);
 
             // Drawing polyline in the Google Map for the i-th route
             map.addPolyline(lineOptions);
+            //finish();
         }
-    }
+    }//ParserTask Class
+
+
+
 }
