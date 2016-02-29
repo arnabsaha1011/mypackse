@@ -11,6 +11,7 @@ import java.util.HashMap;
 import java.util.List;
 
 /**
+ * Not copied from stackoverflow.com
  * Created by Ye on 2/24/16.
  */
 public class DirectionsJSONParser {

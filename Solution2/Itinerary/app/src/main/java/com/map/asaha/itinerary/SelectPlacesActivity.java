@@ -17,7 +17,7 @@ public class SelectPlacesActivity extends Activity {
     ArrayList<EditText> placesList;
 
     public SelectPlacesActivity() {
-        placesList = new ArrayList<>();
+        placesList = new ArrayList<EditText>();
     }
 
     @Override
@@ -57,16 +57,16 @@ public class SelectPlacesActivity extends Activity {
     }
 
     public void addLocation(View view) {
-        LinearLayout linearLayout = (LinearLayout) findViewById(R.id.places_layout);
+        final LinearLayout linearLayout = (LinearLayout) findViewById(R.id.places_layout);
 
-        LinearLayout linearLayoutContainer = new LinearLayout(this);
+        final LinearLayout linearLayoutContainer = new LinearLayout(this);
         LinearLayout.LayoutParams linearLayoutContainerParams = new LinearLayout.LayoutParams(LinearLayout.LayoutParams.FILL_PARENT, LinearLayout.LayoutParams.WRAP_CONTENT);
         linearLayoutContainer.setLayoutParams(linearLayoutContainerParams);
 
         LinearLayout.LayoutParams editTextParams = new LinearLayout.LayoutParams(LinearLayout.LayoutParams.WRAP_CONTENT, LinearLayout.LayoutParams.FILL_PARENT);
         editTextParams.leftMargin = 10;
         editTextParams.weight = 1;
-        EditText myEditText = new EditText(this);
+        final EditText myEditText = new EditText(this);
         myEditText.setLayoutParams(editTextParams);
         myEditText.setInputType(InputType.TYPE_CLASS_TEXT);
         myEditText.setHint("Choose destination...");
@@ -77,6 +77,13 @@ public class SelectPlacesActivity extends Activity {
         closeButtonParams.rightMargin = 5;
         closeButton.setLayoutParams(closeButtonParams);
         closeButton.setBackground(getResources().getDrawable(R.drawable.places_ic_clear));
+        closeButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                linearLayout.removeView(linearLayoutContainer);
+                placesList.remove(myEditText);
+            }
+        });
 
         linearLayoutContainer.addView(myEditText);
         linearLayoutContainer.addView(closeButton);
