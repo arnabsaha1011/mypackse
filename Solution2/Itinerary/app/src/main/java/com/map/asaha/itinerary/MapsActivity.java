@@ -8,65 +8,59 @@ import android.support.v4.app.ActivityCompat;
 import android.support.v4.app.FragmentActivity;
 import android.view.Menu;
 import android.view.View;
-import android.widget.Button;
 
+import com.google.android.gms.maps.CameraUpdate;
 import com.google.android.gms.maps.CameraUpdateFactory;
 import com.google.android.gms.maps.GoogleMap;
 import com.google.android.gms.maps.MapFragment;
 import com.google.android.gms.maps.model.LatLng;
-import com.google.android.gms.maps.model.MarkerOptions;
+import com.google.android.gms.maps.model.LatLngBounds;
+import com.google.android.gms.maps.model.Marker;
 
 import java.io.IOException;
+import java.util.List;
 
 /**
  * Map view
  * Created by asaha on 2/24/2016.
  */
 public class MapsActivity extends FragmentActivity {
-    private GoogleMap mMap;
-    String location_1, location_2;
+    private GoogleMap googleMap;
+    private List<String> placesList = null;
+    String places, clear_map = "false";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_maps);
 
-        if (mMap == null) {
-            mMap = ((MapFragment) getFragmentManager().findFragmentById(R.id.map)).getMap();
+        if (googleMap == null) {
+            googleMap = ((MapFragment) getFragmentManager().findFragmentById(R.id.map2)).getMap();
         }
-        if (mMap != null) {
+        if (googleMap != null) {
             setUpMap();
         }
 
         Intent intent = getIntent();
         // Receiving the Data
-        location_1 = intent.getStringExtra("location_1");
-        location_2 = intent.getStringExtra("location_2");
-        Button btnClose = (Button) findViewById(R.id.btnClose);
+        places = intent.getStringExtra("places");
+        placesList = Utility.getPlacesListFromString(places);
+        clear_map = intent.getStringExtra("clear_map") == null ? "false" : intent.getStringExtra("clear_map");
         try {
             onSearch();
         } catch (IOException e) {
             e.printStackTrace();
         }
-
-        // Binding Click event to Button
-       /* btnClose.setOnClickListener(new View.OnClickListener() {
-
-            public void onClick(View arg0) {
-                //Closing SecondScreen Activity
-                finish();
-            }
-        });*/
     }
+
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
-//        getMenuInflater().inflate(R.layout.select_places, menu);
         return true;
     }
 
     private void setUpMap() {
-        mMap.addMarker(new MarkerOptions().position(new LatLng(0, 0)).title("Marker"));
+//        googleMap.addMarker(new MarkerOptions().position(new LatLng(0, 0)).title("Marker"));
         if (ActivityCompat.checkSelfPermission(this, Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED && ActivityCompat.checkSelfPermission(this, Manifest.permission.ACCESS_COARSE_LOCATION) != PackageManager.PERMISSION_GRANTED) {
             // TODO: Consider calling
             //    ActivityCompat#requestPermissions
@@ -77,30 +71,51 @@ public class MapsActivity extends FragmentActivity {
             // for ActivityCompat#requestPermissions for more details.
             return;
         }
-        mMap.setMyLocationEnabled(true);
+        googleMap.setMyLocationEnabled(true);
     }
 
     public void onSearch() throws IOException {
-//        setContentView(R.layout.maps_view);
+        LatLngBounds.Builder builder = new LatLngBounds.Builder();
+        Marker marker = null;
+        if (!placesList.get(0).equals("") && !placesList.get(1).equals("")) {
+            LatLng place0 = MapUtility.getLatLngFromLocationName(this, placesList.get(0));
+            LatLng place1 = MapUtility.getLatLngFromLocationName(this, placesList.get(1));
 
-        if (!location_1.equals("") && !location_2.equals("")) {
-            LatLng latLng1 = MapUtility.getLatLngFromLocationName(this, location_1);
-            mMap.addMarker(new MarkerOptions().position(latLng1).title(location_1));
+            MapUtility mapUtility = new MapUtility();
 
-            LatLng latLng2 = MapUtility.getLatLngFromLocationName(this, location_2);
-            mMap.addMarker(new MarkerOptions().position(latLng2).title(location_2));
+            // draw the first marker
+            marker = mapUtility.drawMarker(googleMap, place0, placesList.get(0));
+            builder.include(marker.getPosition());
 
-            MapUtility.drawPath(mMap, latLng1, latLng2);
-            mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(latLng1, 10));
+            marker = mapUtility.drawMarker(googleMap, place1, placesList.get(1));
+            builder.include(marker.getPosition());
+
+            mapUtility.drawPath(this, googleMap, place0, place1);
+
+            for (int i = 2; i < placesList.size(); i++) {
+                place0 = place1;
+                place1 = MapUtility.getLatLngFromLocationName(this, placesList.get(i));
+                marker = mapUtility.drawMarker(googleMap, place1, placesList.get(i));
+                builder.include(marker.getPosition());
+                mapUtility.drawPath(this, googleMap, place0, place1);
+            }
         }
+
+        LatLngBounds bounds = builder.build();
+        int padding = 2; // offset from edges of the map in pixels
+        CameraUpdate cameraUpdate = CameraUpdateFactory.newLatLngZoom(bounds.getCenter(), 10);
+        googleMap.moveCamera(cameraUpdate);
     }
 
     private void setUpMapIfNeeded() {
-        if (mMap == null) {
-            mMap = ((MapFragment) getFragmentManager().findFragmentById(R.id.map)).getMap();
+        if (googleMap == null) {
+            googleMap = ((MapFragment) getFragmentManager().findFragmentById(R.id.map)).getMap();
         }
-        if (mMap != null)
+        if (googleMap != null)
             setUpMap();
     }
 
+    public void onBack(View view) {
+        finish();
+    }
 }
