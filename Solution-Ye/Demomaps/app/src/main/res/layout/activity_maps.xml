@@ -11,7 +11,7 @@ android:orientation="vertical">
 
     <AutoCompleteTextView
         android:id="@+id/place"
-        android:layout_width="218dp"
+        android:layout_width="134dp"
         android:layout_height="match_parent"
         android:inputType="text"
         android:text="@string/fromPlace">
@@ -26,42 +26,32 @@ android:orientation="vertical">
         android:text="Search" />
 
     <Button
-        android:layout_width="wrap_content"
+        android:layout_width="62dp"
         android:layout_height="wrap_content"
         android:onClick="onAdd"
         android:text="+"
         android:layout_gravity="right" />
 
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Route"
+        android:id="@+id/directionbutton"
+        android:onClick="onDirection" />
+
 </LinearLayout>
 
 
-
-<fragment xmlns:android="http://schemas.android.com/apk/res/android"
+    <fragment xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:map="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/map"
     android:name="com.google.android.gms.maps.SupportMapFragment"
     android:layout_width="match_parent"
-    android:layout_height="467dp"
+    android:layout_height="510dp"
     tools:context="com.example.ye.demomaps.MapsActivity" />
 
-    <LinearLayout
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content">
 
-    <Button
-        android:layout_width="192dp"
-        android:layout_height="wrap_content"
-        android:text="My location"
-        android:id="@+id/button2"
-        android:onClick="onMyLocation"/>
-
-    <Button
-        android:layout_width="192dp"
-        android:layout_height="wrap_content"
-        android:text="Direction"
-        android:id="@+id/directionbutton"
-        android:onClick="onDirection" />
-</LinearLayout>
 
 </LinearLayout>

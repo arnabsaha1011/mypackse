@@ -46,7 +46,7 @@ public class MapsActivity extends FragmentActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_maps);
 
-        tvDistanceDuration = (TextView) findViewById(R.id.place);
+        //tvDistanceDuration = (TextView) findViewById(R.id.place);
 
         // Initializing
         markerPoints = new ArrayList<LatLng>();
@@ -103,6 +103,7 @@ public class MapsActivity extends FragmentActivity {
 
     public void onSearch(View view) throws IOException {
         EditText place_1 = (EditText) findViewById(R.id.place);
+
         String location_1 = place_1.getText().toString();
 
         List<Address> addressList;
@@ -335,10 +336,10 @@ public class MapsActivity extends FragmentActivity {
                 // Adding all the points in the route to LineOptions
                 lineOptions.addAll(points);
                 lineOptions.width(12);
-                lineOptions.color(Color.GREEN);
+                lineOptions.color(Color.BLUE);
             }
 
-            tvDistanceDuration.setText("Distance:" + distance + ", Duration:" + duration);
+            //tvDistanceDuration.setText("Distance:" + distance + ", Duration:" + duration);
 
             // Drawing polyline in the Google Map for the i-th route
             map.addPolyline(lineOptions);
