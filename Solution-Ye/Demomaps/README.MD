@@ -8,3 +8,4 @@ This is an android application with the following functionalities:
 * Search for a place in the application
 
 Here is a [demo vedio](https://youtu.be/btGUecJG9O8) for solution 2:
+[link](https://cloud.githubusercontent.com/assets/16628107/13468007/b676a3d0-e06e-11e5-8e0d-4292793b15b2.png)
