@@ -98,7 +98,7 @@
       var place2 = document.getElementById('place2').value;
       var start = lonlat[place1];
       var end = lonlat[place2];
-      alert(start);
+      //alert(start);
       var directionsDisplay = new google.maps.DirectionsRenderer();// also, constructor can get "DirectionsRendererOptions" object
       directionsDisplay.setMap(map); // map should be already initialized.
 
@@ -121,9 +121,11 @@
     function clearall(){
       initMap();
       document.getElementById('text1').value = "";
-      i=0;
-      address=[];
-      lonlat=[];
+      var i=1;
+      var address=[];
+      var lonlat=[];
+      var labels = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ';
+      var labelIndex = 0;
     }
     </script>
     <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyC_aOE6jvjAp5oWwNPT5Fgn6kukWFRphvQ&signed_in=true&libraries=places&callback=initMap"
