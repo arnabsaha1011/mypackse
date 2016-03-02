@@ -7,3 +7,4 @@ This is an android application with the following functionalities:
 * Get the real route of mutltiple markers using Directions.
 * Search for a place in the application
 
+Here is a [demo vedio](https://youtu.be/btGUecJG9O8) for solution 2:
