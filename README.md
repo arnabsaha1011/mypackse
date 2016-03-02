@@ -26,8 +26,8 @@ upcoming months.
 For more details click on the [link](https://github.com/arnabsaha1011/mypackse/blob/master/New%20Folder/Survey/Feb%201%20report.pdf)
 
 ## March deliverable:
-* Solution 1: Find paths between two locations and save previous searches.
-* Solution 2: Find paths between two or more locations. Click on the map to add new markers.
+* Solution 1: Find paths between two locations and save previous searches. Click on the map to add new markers.[Click here](https://youtu.be/0HET2h4tnpw)
+* Solution 2: Find paths between two or more locations.  to watch a demo video.
 * Solution 3: Full itinerary application. [Click here](https://youtu.be/Xr5GIIHF4_o) to watch a demo video.
 
 
