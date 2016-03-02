@@ -26,7 +26,6 @@
     <form id="form1" >
     <input type="text" id="text1" size="24"/></br>
     <input type="button" id="button1" value="Search" style="width:200px"/></br>
-    <input type="textfield" id="textf" size="24"/></br>
     <input type="textfield" id="place1" size="9"/>
     <input type="textfield" id="place2" size="9"/></br>
     <input type="button" id="button3" onclick="displayRoute()" 
@@ -42,8 +41,8 @@
       // initial function
       function initMap() {
         map = new google.maps.Map(document.getElementById('map'), {
-    center: {lat: 35.771518, lng: -78.674357},
-    zoom: 13,
+        center: {lat: 35.771518, lng: -78.674357},
+        zoom: 13,
         });
       
 
@@ -70,7 +69,7 @@
         
         address[i] = document.getElementById('text1').value;
         
-        document.getElementById('textf').value = i;
+        //document.getElementById('textf').value = i;
         geocoder.geocode({'address': address[i]}, function(results, status) {
           if (status === google.maps.GeocoderStatus.OK) {
             resultsMap.setCenter(results[0].geometry.location);
@@ -95,9 +94,11 @@
       //var start = new google.maps.LatLng(28.6, 77.120291);
       //var end = new google.maps.LatLng(28.72082, 77.107241);
       //alert(lonlat[0]);
-      var start = lonlat[0];
-      var end = lonlat[1];
-
+      var place1 = document.getElementById('place1').value;
+      var place2 = document.getElementById('place2').value;
+      var start = lonlat[place1];
+      var end = lonlat[place2];
+      alert(start);
       var directionsDisplay = new google.maps.DirectionsRenderer();// also, constructor can get "DirectionsRendererOptions" object
       directionsDisplay.setMap(map); // map should be already initialized.
 
