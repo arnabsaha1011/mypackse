@@ -1,0 +1,30 @@
+[
+    {
+        "merged": "C:\\Users\\asaha\\Documents\\seProject\\Solution3\\Itinerary\\app\\build\\intermediates\\res\\merged\\debug\\raw\\gtm_analytics",
+        "source": "C:\\Users\\asaha\\Documents\\seProject\\Solution3\\Itinerary\\app\\build\\intermediates\\exploded-aar\\com.google.android.gms\\play-services-analytics\\8.4.0\\res\\raw\\gtm_analytics"
+    },
+    {
+        "merged": "C:\\Users\\Ye\\mypackse\\Solution2\\Itinerary\\app\\build\\intermediates\\res\\merged\\debug\\raw\\gtm_analytics",
+        "source": "C:\\Users\\Ye\\mypackse\\Solution2\\Itinerary\\app\\build\\intermediates\\exploded-aar\\com.google.android.gms\\play-services-analytics\\8.4.0\\res\\raw\\gtm_analytics"
+    },
+    {
+        "merged": "C:\\Users\\asaha\\Documents\\seProject\\Solution2\\Itinerary\\app\\build\\intermediates\\res\\merged\\debug\\raw\\gtm_analytics",
+        "source": "C:\\Users\\asaha\\Documents\\seProject\\Solution2\\Itinerary\\app\\build\\intermediates\\exploded-aar\\com.google.android.gms\\play-services-analytics\\8.4.0\\res\\raw\\gtm_analytics"
+    },
+    {
+        "merged": "C:\\Users\\Ye\\mypackse\\Solution2\\Itinerary\\C:\\Users\\asaha\\Documents\\mypackse\\Soln2\\Itinerary\\app\\build\\intermediates\\res\\merged\\debug\\raw\\gtm_analytics",
+        "source": "C:\\Users\\Ye\\mypackse\\Solution2\\Itinerary\\C:\\Users\\asaha\\Documents\\mypackse\\Soln2\\Itinerary\\app\\build\\intermediates\\exploded-aar\\com.google.android.gms\\play-services-analytics\\8.4.0\\res\\raw\\gtm_analytics"
+    },
+    {
+        "merged": "C:\\Users\\Ye\\mypackse\\Solution2\\Itinerary\\C:\\Users\\asaha\\Documents\\mypackse\\Solution2\\Itinerary\\app\\build\\intermediates\\res\\merged\\debug\\raw\\gtm_analytics",
+        "source": "C:\\Users\\Ye\\mypackse\\Solution2\\Itinerary\\C:\\Users\\asaha\\Documents\\mypackse\\Solution2\\Itinerary\\app\\build\\intermediates\\exploded-aar\\com.google.android.gms\\play-services-analytics\\8.4.0\\res\\raw\\gtm_analytics"
+    },
+    {
+        "merged": "C:\\Users\\Ye\\mypackse\\Solution2\\Itinerary\\C:\\Users\\asaha\\Documents\\Itinerary\\app\\build\\intermediates\\res\\merged\\debug\\raw\\gtm_analytics",
+        "source": "C:\\Users\\Ye\\mypackse\\Solution2\\Itinerary\\C:\\Users\\asaha\\Documents\\Itinerary\\app\\build\\intermediates\\exploded-aar\\com.google.android.gms\\play-services-analytics\\8.4.0\\res\\raw\\gtm_analytics"
+    },
+    {
+        "merged": "C:\\Users\\Ye\\mypackse\\Solution2\\Itinerary\\C:\\Users\\asaha\\AndroidStudioProjects\\Itinerary\\app\\build\\intermediates\\res\\merged\\debug\\raw\\gtm_analytics",
+        "source": "C:\\Users\\Ye\\mypackse\\Solution2\\Itinerary\\C:\\Users\\asaha\\AndroidStudioProjects\\Itinerary\\app\\build\\intermediates\\exploded-aar\\com.google.android.gms\\play-services-analytics\\8.4.0\\res\\raw\\gtm_analytics"
+    }
+]
