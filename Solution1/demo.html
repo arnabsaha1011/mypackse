@@ -16,7 +16,7 @@
       }
       #form1{
         position: absolute;
-        right: 0%;
+        right: 20px;
         top:5%;
       }
     </style>
@@ -24,13 +24,15 @@
   <body>
     <div>
     <form id="form1" >
-    <input type="text" id="text1"/></br>
-    <input type="button" id="button1" value="Search" /></br>
-    <input type="button" id="button2" onclick="clearall()" 
-    value="Clear Everything" /></br>
+    <input type="text" id="text1" size="24"/></br>
+    <input type="button" id="button1" value="Search" style="width:200px"/></br>
+    <input type="textfield" id="textf" size="24"/></br>
+    <input type="textfield" id="place1" size="9"/>
+    <input type="textfield" id="place2" size="9"/></br>
     <input type="button" id="button3" onclick="displayRoute()" 
-    value="Direction" /></br>
-    <input type="textfield" id="textf"/>
+    value="Direction" style="width:200px"/></br>
+    <input type="button" id="button2" onclick="clearall()" 
+    value="Clear Everything" style="width:200px"/></br>
     </form>
     </div>
     <div id="map"></div>
@@ -57,9 +59,11 @@
   }
   //**************************************
   
-      var i=0;
+      var i=1;
       var address=[];
       var lonlat=[];
+      var labels = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ';
+      var labelIndex = 0;
       
       // use geocode to get lan and lat to marker
   function geocodeAddress(geocoder, resultsMap) {
@@ -72,11 +76,12 @@
             resultsMap.setCenter(results[0].geometry.location);
             lonlat[i]=results[0].geometry.location; // store langitude and latitude in array
             //alert(lonlat[1]);
-            i++;
             var marker = new google.maps.Marker({
               map: resultsMap,
-              position: results[0].geometry.location
+              position: results[0].geometry.location,
+              label: labels[labelIndex++ % labels.length]
             });
+            i++;
           }
           else {
             alert('Geocode was not successful for the following reason: ' + status);
@@ -89,7 +94,7 @@
 
       //var start = new google.maps.LatLng(28.6, 77.120291);
       //var end = new google.maps.LatLng(28.72082, 77.107241);
-      alert(lonlat[0]);
+      //alert(lonlat[0]);
       var start = lonlat[0];
       var end = lonlat[1];
 
