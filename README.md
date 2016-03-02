@@ -3,9 +3,10 @@
 ## Team members:
 
 * Arnab Saha (asaha@ncsu.edu)
-* Yiqiao Xu (yxu35@ncsu.edu)
-* Ye Mao (ymao4@ncsu.edu)
 * Song Ju (sju2@ncsu.edu)
+* Ye Mao (ymao4@ncsu.edu)
+* Yiqiao Xu (yxu35@ncsu.edu)
+
 
 ## Feb 1 deliverable:
 
@@ -26,8 +27,8 @@ For more details click on the [link](https://github.com/arnabsaha1011/mypackse/b
 
 ## March deliverable:
 * Solution 1: Find paths between two locations and save previous searches.
-* Solution 2: Find paths between two or more locations. Manage timeline of each location/path. Itinerary android application. Click on the [link](https://github.com/asaha1/Itinerary) for details
-* Solution 3: Full itinerary application
+* Solution 2: Find paths between two or more locations. Click on the map to add new markers.
+* Solution 3: Full itinerary application. [Click here](https://youtu.be/Xr5GIIHF4_o) to watch a demo video.
 
 
-More details upcoming
+For more details click on the [link](https://docs.google.com/presentation/d/1iMTTqjkAjfIR9KV12kleRVFUgW58u_fqsxpd1sPCLtM/edit#slide=id.p3)
