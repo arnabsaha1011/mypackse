@@ -1,5 +1,4 @@
 # Project for SE'16
-# Temporary Change
 
 ## Team members:
 
