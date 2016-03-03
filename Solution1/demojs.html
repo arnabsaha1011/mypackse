@@ -1,0 +1,297 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta name="viewport" content="initial-scale=1.0, user-scalable=no">
+    <meta charset="utf-8">
+    <title>Map</title>
+    <style>
+      html, body {
+        height: 100%;
+        margin: 0;
+        padding: 0;
+      }
+      #map {
+        height: 100%;
+      }
+      .controls {
+        margin-top: 10px;
+        border: 1px solid transparent;
+        border-radius: 2px 0 0 2px;
+        box-sizing: border-box;
+        -moz-box-sizing: border-box;
+        height: 32px;
+        outline: none;
+        box-shadow: 0 2px 6px rgba(0, 0, 0, 0.3);
+      }
+        
+      #mode-selector {
+        color: #fff;
+        margin-left: 12px;
+        padding: 5px 11px 0px 11px;
+      }
+
+      #mode-selector label {
+        font-family: Roboto;
+        font-size: 13px;
+        font-weight: 300;
+      }
+
+      #pac-input {
+        background-color: #fff;
+        font-family: Roboto;
+        font-size: 15px;
+        font-weight: 300;
+        margin-left: 12px;
+        padding: 0 11px 0 13px;
+        text-overflow: ellipsis;
+        width: 300px;
+      }
+
+      #pac-input:focus {
+        border-color: #4d90fe;
+      }
+
+      .pac-container {
+        font-family: Roboto;
+      }
+
+      #type-selector {
+        color: #fff;
+        background-color: #4d90fe;
+        padding: 5px 11px 0px 11px;
+      }
+
+      #type-selector label {
+        font-family: Roboto;
+        font-size: 13px;
+        font-weight: 300;
+      }
+      #target {
+        width: 345px;
+      }
+        
+      td {text-align:center}
+        
+    </style>
+  </head>
+  <body>
+      
+    <input id="pac-input" class="controls" type="text" placeholder="Search Box">
+      
+    <div id="mode-selector" class="controls">
+
+      <input type="button" name="type" id="direction" value="Direction" onclick="directions()">
+
+      <input type="button" name="type" id="hide" value="Hide">
+        
+      <input type="button" name="type" id="show" value="Show">
+    </div>
+      
+    <div id="Ptablediv">
+    <table id="PTable" border="1">
+        <tr>
+            <td>Marker</td>
+            <td>Place</td>
+            <td></td>
+        </tr>
+        <tr>
+            <td id="Pindex">1</td>
+            <td><input size=15 type="text" id="latbox"/></td>
+            <td><input type="button" id="delPbutton" value="Remove" onclick="deleteRow(this)"/></td>
+        </tr>
+    </table>
+    </div>
+    <div id="map"></div>
+      <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyC_aOE6jvjAp5oWwNPT5Fgn6kukWFRphvQ&signed_in&libraries=places">
+      </script>
+      
+    <script>
+        
+      var raleigh = {lat: 35.7704899, lng: -78.6351392};
+      var markers = [];
+      var places = [];
+      var map;
+        
+      function initMap() {
+          map = new google.maps.Map(document.getElementById('map'), {
+          center: raleigh,
+          zoom: 13,
+          mapTypeId: google.maps.MapTypeId.ROADMAP,
+          zoomControl: true,
+          mapTypeControl: false,
+          scaleControl: true,
+          streetViewControl: false,
+          rotateControl: true,
+          fullscreenControl: false,
+        });
+
+        // Create the search box and link it to the UI element.
+        var input = document.getElementById('pac-input');
+        var searchBox = new google.maps.places.SearchBox(input);
+        map.controls[google.maps.ControlPosition.TOP_LEFT].push(input);
+          
+        // Create the marker panel
+        var modes = document.getElementById('mode-selector');
+        map.controls[google.maps.ControlPosition.TOP_LEFT].push(modes);
+          
+        var placeTable = document.getElementById('Ptablediv');
+        map.controls[google.maps.ControlPosition.LEFT_TOP].push(placeTable);
+
+        // Bias the SearchBox results towards current map's viewport.
+        map.addListener('bounds_changed', function() {
+          searchBox.setBounds(map.getBounds());
+        });
+
+
+        var uniquePId = 1;
+        // Listen for the event fired when the user selects a prediction and retrieve
+        // more details for that place.
+        searchBox.addListener('places_changed', function() {
+          var places = searchBox.getPlaces();
+
+          if (places.length == 0) {
+            return;
+          }
+
+          // Clear out the old markers.
+          markers.forEach(function(marker) {
+            marker.setMap(null);
+          });
+          uniquePId = 1;
+          markers = [];
+          
+          // For each place, get the icon, name and location.
+          var bounds = new google.maps.LatLngBounds();
+          places.forEach(function(place) {
+            var icon = {
+              size: new google.maps.Size(71, 71),
+              origin: new google.maps.Point(0, 0),
+              anchor: new google.maps.Point(17, 34),
+              scaledSize: new google.maps.Size(25, 25)
+            };
+
+            // Create a marker for each place.
+            marker = new google.maps.Marker({
+              map: map,
+              icon: icon,
+              title: place.name,
+              position: place.geometry.location,
+              id: uniquePId,
+              draggable: true
+            });
+            uniquePId++;
+            google.maps.event.addListener(marker, "click", function () {
+                var marker = this;
+                var content = marker.title;
+                content += "<br /><input type = 'button' value = 'Add place' onclick = 'insRow(" + marker.id + ");' />";
+                var infoWindow = new google.maps.InfoWindow({
+                    content: content
+                });
+                infoWindow.open(map, marker);
+                //alert("location is :" + content)               
+            });
+
+            markers.push(marker);
+
+            if (place.geometry.viewport) {
+              // Only geocodes have viewport.
+              bounds.union(place.geometry.viewport);
+            } else {
+              bounds.extend(place.geometry.location);
+            }
+          });
+          map.fitBounds(bounds);
+        });
+
+          
+      }
+      
+      function directions()
+      {
+
+          for(var i = 0; i < places.length-1; i++)
+          {
+              marker1 = places[i];
+              marker2 = places[i+1];
+              var directionsService = new google.maps.DirectionsService();
+              var directionsDisplay = new google.maps.DirectionsRenderer({
+                  draggable: true,
+                  map: map
+                });
+              displayRoute(marker1.position, marker2.position, directionsService, directionsDisplay);
+          }
+          
+      }
+      
+      function displayRoute(origin, destination, service, display) {
+        service.route({
+          origin: origin,
+          destination: destination,
+          travelMode: google.maps.TravelMode.DRIVING,
+          avoidTolls: true
+        }, function(response, status) {
+          if (status === google.maps.DirectionsStatus.OK) {
+            display.setDirections(response);
+          } else {
+            alert('Could not display directions due to: ' + status);
+          }
+        });
+      }
+
+      
+        
+      function deleteRow(row)
+        {
+            var index=row.parentNode.parentNode.rowIndex;
+            
+            document.getElementById('PTable').deleteRow(index);
+            places.splice(index,1);
+            
+            var t = document.getElementById('PTable');
+            //alert("length: " + places.length);
+            for (var i = 1; i < t.rows.length; i++) 
+            {
+                t.getElementsByTagName("tr")[i].getElementsByTagName("td")[0].innerHTML = i;
+            }
+        }
+
+
+        function insRow(id)
+        {
+            var marke
+            
+            for (var i = 0; i < markers.length; i++) 
+            {
+                if (markers[i].id == id) 
+                {               
+                    marker = markers[i]
+                }
+            }
+            places.push(marker);
+            var x=document.getElementById('PTable');
+            
+            if(places.length == 1)
+                {
+                    var inp1 = x.rows[1].cells[1].getElementsByTagName('input')[0];
+                    inp1.value = marker.title;
+                    
+                }
+            else
+                {
+                    
+                    var new_row = x.rows[1].cloneNode(true);
+                    var len = places.length;
+                    new_row.cells[0].innerHTML = len;
+
+                    var inp1 = new_row.cells[1].getElementsByTagName('input')[0];
+                    inp1.value = marker.title;
+                    x.appendChild( new_row );
+                }
+        }
+
+    </script>
+      
+    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyC_aOE6jvjAp5oWwNPT5Fgn6kukWFRphvQ&signed_in=true&libraries=places&callback=initMap"
+    async defer></script>
+  </body>
+</html>

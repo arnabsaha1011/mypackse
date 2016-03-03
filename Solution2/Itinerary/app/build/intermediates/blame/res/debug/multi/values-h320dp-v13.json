@@ -1,0 +1,146 @@
+[
+    {
+        "outputFile": "C:\\Users\\Ye\\mypackse\\Solution2\\Itinerary\\C:\\Users\\asaha\\Documents\\mypackse\\Solution2\\Itinerary\\app\\build\\intermediates\\res\\merged\\debug\\values-h320dp-v13\\values-h320dp-v13.xml",
+        "map": [
+            {
+                "to": {
+                    "startLine": 2,
+                    "startColumn": 4,
+                    "startOffset": 55,
+                    "endColumn": 57,
+                    "endOffset": 108
+                },
+                "from": {
+                    "file": "C:\\Users\\Ye\\mypackse\\Solution2\\Itinerary\\C:\\Users\\asaha\\Documents\\mypackse\\Solution2\\Itinerary\\app\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\23.1.1\\res\\values-h320dp\\values-h320dp.xml",
+                    "position": {
+                        "startLine": 4,
+                        "startColumn": 4,
+                        "startOffset": 231,
+                        "endColumn": 57,
+                        "endOffset": 284
+                    }
+                }
+            }
+        ]
+    },
+    {
+        "outputFile": "C:\\Users\\Ye\\mypackse\\Solution2\\Itinerary\\C:\\Users\\asaha\\Documents\\mypackse\\Soln2\\Itinerary\\app\\build\\intermediates\\res\\merged\\debug\\values-h320dp-v13\\values-h320dp-v13.xml",
+        "map": [
+            {
+                "to": {
+                    "startLine": 2,
+                    "startColumn": 4,
+                    "startOffset": 55,
+                    "endColumn": 57,
+                    "endOffset": 108
+                },
+                "from": {
+                    "file": "C:\\Users\\Ye\\mypackse\\Solution2\\Itinerary\\C:\\Users\\asaha\\Documents\\mypackse\\Soln2\\Itinerary\\app\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\23.1.1\\res\\values-h320dp\\values-h320dp.xml",
+                    "position": {
+                        "startLine": 4,
+                        "startColumn": 4,
+                        "startOffset": 231,
+                        "endColumn": 57,
+                        "endOffset": 284
+                    }
+                }
+            }
+        ]
+    },
+    {
+        "outputFile": "C:\\Users\\Ye\\mypackse\\Solution2\\Itinerary\\C:\\Users\\asaha\\AndroidStudioProjects\\Itinerary\\app\\build\\intermediates\\res\\merged\\debug\\values-h320dp-v13\\values-h320dp-v13.xml",
+        "map": [
+            {
+                "to": {
+                    "startLine": 2,
+                    "startColumn": 4,
+                    "startOffset": 55,
+                    "endColumn": 57,
+                    "endOffset": 108
+                },
+                "from": {
+                    "file": "C:\\Users\\Ye\\mypackse\\Solution2\\Itinerary\\C:\\Users\\asaha\\AndroidStudioProjects\\Itinerary\\app\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\23.1.1\\res\\values-h320dp\\values-h320dp.xml",
+                    "position": {
+                        "startLine": 4,
+                        "startColumn": 4,
+                        "startOffset": 231,
+                        "endColumn": 57,
+                        "endOffset": 284
+                    }
+                }
+            }
+        ]
+    },
+    {
+        "outputFile": "C:\\Users\\asaha\\Documents\\seProject\\Solution2\\Itinerary\\app\\build\\intermediates\\res\\merged\\debug\\values-h320dp-v13\\values-h320dp-v13.xml",
+        "map": [
+            {
+                "to": {
+                    "startLine": 2,
+                    "startColumn": 4,
+                    "startOffset": 55,
+                    "endColumn": 57,
+                    "endOffset": 108
+                },
+                "from": {
+                    "file": "C:\\Users\\asaha\\Documents\\seProject\\Solution2\\Itinerary\\app\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\23.1.1\\res\\values-h320dp\\values-h320dp.xml",
+                    "position": {
+                        "startLine": 4,
+                        "startColumn": 4,
+                        "startOffset": 231,
+                        "endColumn": 57,
+                        "endOffset": 284
+                    }
+                }
+            }
+        ]
+    },
+    {
+        "outputFile": "C:\\Users\\Ye\\mypackse\\Solution2\\Itinerary\\app\\build\\intermediates\\res\\merged\\debug\\values-h320dp-v13\\values-h320dp-v13.xml",
+        "map": [
+            {
+                "to": {
+                    "startLine": 2,
+                    "startColumn": 4,
+                    "startOffset": 55,
+                    "endColumn": 57,
+                    "endOffset": 108
+                },
+                "from": {
+                    "file": "C:\\Users\\Ye\\mypackse\\Solution2\\Itinerary\\app\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\23.1.1\\res\\values-h320dp\\values-h320dp.xml",
+                    "position": {
+                        "startLine": 4,
+                        "startColumn": 4,
+                        "startOffset": 231,
+                        "endColumn": 57,
+                        "endOffset": 284
+                    }
+                }
+            }
+        ]
+    },
+    {
+        "outputFile": "C:\\Users\\Ye\\mypackse\\Solution2\\Itinerary\\C:\\Users\\asaha\\Documents\\Itinerary\\app\\build\\intermediates\\res\\merged\\debug\\values-h320dp-v13\\values-h320dp-v13.xml",
+        "map": [
+            {
+                "to": {
+                    "startLine": 2,
+                    "startColumn": 4,
+                    "startOffset": 55,
+                    "endColumn": 57,
+                    "endOffset": 108
+                },
+                "from": {
+                    "file": "C:\\Users\\Ye\\mypackse\\Solution2\\Itinerary\\C:\\Users\\asaha\\Documents\\Itinerary\\app\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\23.1.1\\res\\values-h320dp\\values-h320dp.xml",
+                    "position": {
+                        "startLine": 4,
+                        "startColumn": 4,
+                        "startOffset": 231,
+                        "endColumn": 57,
+                        "endOffset": 284
+                    }
+                }
+            }
+        ]
+    }
+]
