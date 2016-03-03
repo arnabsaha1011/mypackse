@@ -16,11 +16,7 @@
       }
       #form1{
         position: absolute;
-<<<<<<< HEAD
-        right: 0%;
-=======
-        right: 20px;
->>>>>>> 0720a4dedc700bf9c1f5b753dad5eb443732c1c3
+        right: 3%;
         top:5%;
       }
     </style>
@@ -28,24 +24,14 @@
   <body>
     <div>
     <form id="form1" >
-<<<<<<< HEAD
-    <input type="text" id="text1"/></br>
-    <input type="button" id="button1" value="Search" /></br>
-    <input type="button" id="button2" onclick="clearall()" 
-    value="Clear Everything" /></br>
-    <input type="button" id="button3" onclick="displayRoute()" 
-    value="Direction" /></br>
-    <input type="textfield" id="textf"/>
-=======
-    <input type="text" id="text1" size="24"/></br>
+    <input type="text" id="text1" size="24" placeholder="Search Places"/></br>
     <input type="button" id="button1" value="Search" style="width:200px"/></br>
-    <input type="textfield" id="place1" size="9"/>
-    <input type="textfield" id="place2" size="9"/></br>
+    <input type="textfield" id="place1" size="9" placeholder="Start"/>
+    <input type="textfield" id="place2" size="9" placeholder="End"/></br>
     <input type="button" id="button3" onclick="displayRoute()" 
     value="Direction" style="width:200px"/></br>
     <input type="button" id="button2" onclick="clearall()" 
     value="Clear Everything" style="width:200px"/></br>
->>>>>>> 0720a4dedc700bf9c1f5b753dad5eb443732c1c3
     </form>
     </div>
     <div id="map"></div>
@@ -55,13 +41,8 @@
       // initial function
       function initMap() {
         map = new google.maps.Map(document.getElementById('map'), {
-<<<<<<< HEAD
-    center: {lat: 35.771518, lng: -78.674357},
-    zoom: 13,
-=======
         center: {lat: 35.771518, lng: -78.674357},
         zoom: 13,
->>>>>>> 0720a4dedc700bf9c1f5b753dad5eb443732c1c3
         });
       
 
@@ -77,47 +58,29 @@
   }
   //**************************************
   
-<<<<<<< HEAD
-      var i=0;
-      var address=[];
-      var lonlat=[];
-=======
       var i=1;
       var address=[];
       var lonlat=[];
       var labels = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ';
       var labelIndex = 0;
->>>>>>> 0720a4dedc700bf9c1f5b753dad5eb443732c1c3
       
       // use geocode to get lan and lat to marker
   function geocodeAddress(geocoder, resultsMap) {
         
         address[i] = document.getElementById('text1').value;
         
-<<<<<<< HEAD
-        document.getElementById('textf').value = i;
-=======
         //document.getElementById('textf').value = i;
->>>>>>> 0720a4dedc700bf9c1f5b753dad5eb443732c1c3
         geocoder.geocode({'address': address[i]}, function(results, status) {
           if (status === google.maps.GeocoderStatus.OK) {
             resultsMap.setCenter(results[0].geometry.location);
             lonlat[i]=results[0].geometry.location; // store langitude and latitude in array
             //alert(lonlat[1]);
-<<<<<<< HEAD
-            i++;
-            var marker = new google.maps.Marker({
-              map: resultsMap,
-              position: results[0].geometry.location
-            });
-=======
             var marker = new google.maps.Marker({
               map: resultsMap,
               position: results[0].geometry.location,
               label: labels[labelIndex++ % labels.length]
             });
             i++;
->>>>>>> 0720a4dedc700bf9c1f5b753dad5eb443732c1c3
           }
           else {
             alert('Geocode was not successful for the following reason: ' + status);
@@ -130,19 +93,12 @@
 
       //var start = new google.maps.LatLng(28.6, 77.120291);
       //var end = new google.maps.LatLng(28.72082, 77.107241);
-<<<<<<< HEAD
-      alert(lonlat[0]);
-      var start = lonlat[0];
-      var end = lonlat[1];
-
-=======
       //alert(lonlat[0]);
       var place1 = document.getElementById('place1').value;
       var place2 = document.getElementById('place2').value;
       var start = lonlat[place1];
       var end = lonlat[place2];
       //alert(start);
->>>>>>> 0720a4dedc700bf9c1f5b753dad5eb443732c1c3
       var directionsDisplay = new google.maps.DirectionsRenderer();// also, constructor can get "DirectionsRendererOptions" object
       directionsDisplay.setMap(map); // map should be already initialized.
 
@@ -165,11 +121,6 @@
     function clearall(){
       initMap();
       document.getElementById('text1').value = "";
-<<<<<<< HEAD
-      i=0;
-      address=[];
-      lonlat=[];
-=======
       document.getElementById('place1').value = "";
       document.getElementById('place2').value = "";
       var i=1;
@@ -177,7 +128,6 @@
       var lonlat=[];
       var labels = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ';
       var labelIndex = 0;
->>>>>>> 0720a4dedc700bf9c1f5b753dad5eb443732c1c3
     }
     </script>
     <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyC_aOE6jvjAp5oWwNPT5Fgn6kukWFRphvQ&signed_in=true&libraries=places&callback=initMap"
