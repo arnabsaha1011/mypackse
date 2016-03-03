@@ -8,7 +8,11 @@ android {
 
     defaultConfig {
         applicationId "com.example.ye.demomaps"
+<<<<<<< HEAD
         minSdkVersion 17
+=======
+        minSdkVersion 19
+>>>>>>> 0720a4dedc700bf9c1f5b753dad5eb443732c1c3
         targetSdkVersion 23
         versionCode 1
         versionName "1.0"

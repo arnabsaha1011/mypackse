@@ -10,6 +10,10 @@ import android.util.Log;
 import android.view.View;
 import android.view.inputmethod.InputMethodManager;
 import android.widget.EditText;
+<<<<<<< HEAD
+=======
+import android.widget.TextView;
+>>>>>>> 0720a4dedc700bf9c1f5b753dad5eb443732c1c3
 import android.widget.Toast;
 
 import com.google.android.gms.maps.CameraUpdateFactory;
@@ -37,7 +41,11 @@ public class MapsActivity extends FragmentActivity {
     GoogleMap map;
     ArrayList<LatLng> markerPoints;
 
+<<<<<<< HEAD
     //TextView tvDistanceDuration;
+=======
+    TextView tvDistanceDuration;
+>>>>>>> 0720a4dedc700bf9c1f5b753dad5eb443732c1c3
 
 
     @Override
@@ -45,7 +53,11 @@ public class MapsActivity extends FragmentActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_maps);
 
+<<<<<<< HEAD
        // tvDistanceDuration = (TextView) findViewById(R.id.place);
+=======
+        //tvDistanceDuration = (TextView) findViewById(R.id.place);
+>>>>>>> 0720a4dedc700bf9c1f5b753dad5eb443732c1c3
 
         // Initializing
         markerPoints = new ArrayList<LatLng>();
@@ -56,8 +68,14 @@ public class MapsActivity extends FragmentActivity {
         // Getting Map for the SupportMapFragment
         map = fm.getMap();
 
+<<<<<<< HEAD
         // Enable MyLocation Button in the Map
    //     map.setMyLocationEnabled(true);
+=======
+
+        // Enable MyLocation Button in the Map
+        //     map.setMyLocationEnabled(true);
+>>>>>>> 0720a4dedc700bf9c1f5b753dad5eb443732c1c3
 
         // Setting onclick event listener for the map
         map.setOnMapClickListener(new GoogleMap.OnMapClickListener() {
@@ -65,7 +83,11 @@ public class MapsActivity extends FragmentActivity {
             @Override
             public void onMapClick(LatLng point) {
 
+<<<<<<< HEAD
                 // Already two locations
+=======
+
+>>>>>>> 0720a4dedc700bf9c1f5b753dad5eb443732c1c3
             /*    if (markerPoints.size() > 1) {
                     markerPoints.clear();
                     map.clear();
@@ -87,7 +109,11 @@ public class MapsActivity extends FragmentActivity {
                  */
                 if (markerPoints.size() == 1) {
                     options.icon(BitmapDescriptorFactory.defaultMarker(BitmapDescriptorFactory.HUE_GREEN));
+<<<<<<< HEAD
                 } else if (markerPoints.size() >1 ) {
+=======
+                } else if (markerPoints.size() > 1) {
+>>>>>>> 0720a4dedc700bf9c1f5b753dad5eb443732c1c3
                     options.icon(BitmapDescriptorFactory.defaultMarker(BitmapDescriptorFactory.HUE_RED));
                 }
 
@@ -101,6 +127,10 @@ public class MapsActivity extends FragmentActivity {
 
     public void onSearch(View view) throws IOException {
         EditText place_1 = (EditText) findViewById(R.id.place);
+<<<<<<< HEAD
+=======
+
+>>>>>>> 0720a4dedc700bf9c1f5b753dad5eb443732c1c3
         String location_1 = place_1.getText().toString();
 
         List<Address> addressList;
@@ -126,7 +156,11 @@ public class MapsActivity extends FragmentActivity {
             // Add new marker to the Google Map Android API V2
             if (markerPoints.size() == 1) {
                 options.icon(BitmapDescriptorFactory.defaultMarker(BitmapDescriptorFactory.HUE_GREEN));
+<<<<<<< HEAD
             } else if (markerPoints.size() >1 ) {
+=======
+            } else if (markerPoints.size() > 1) {
+>>>>>>> 0720a4dedc700bf9c1f5b753dad5eb443732c1c3
                 options.icon(BitmapDescriptorFactory.defaultMarker(BitmapDescriptorFactory.HUE_RED));
             }
 
@@ -148,7 +182,10 @@ public class MapsActivity extends FragmentActivity {
     }
 
 
+<<<<<<< HEAD
 
+=======
+>>>>>>> 0720a4dedc700bf9c1f5b753dad5eb443732c1c3
     public void onDirection(View v) {
 
         LatLng origin = markerPoints.get(0);
@@ -262,6 +299,10 @@ public class MapsActivity extends FragmentActivity {
 
             // Invokes the thread for parsing the JSON data
             parserTask.execute(result);
+<<<<<<< HEAD
+=======
+            //finish();
+>>>>>>> 0720a4dedc700bf9c1f5b753dad5eb443732c1c3
         }
     }
 
@@ -333,13 +374,26 @@ public class MapsActivity extends FragmentActivity {
                 // Adding all the points in the route to LineOptions
                 lineOptions.addAll(points);
                 lineOptions.width(12);
+<<<<<<< HEAD
                 lineOptions.color(Color.GREEN);
+=======
+                lineOptions.color(Color.BLUE);
+>>>>>>> 0720a4dedc700bf9c1f5b753dad5eb443732c1c3
             }
 
             //tvDistanceDuration.setText("Distance:" + distance + ", Duration:" + duration);
 
             // Drawing polyline in the Google Map for the i-th route
             map.addPolyline(lineOptions);
+<<<<<<< HEAD
         }
     }
+=======
+            //finish();
+        }
+    }//ParserTask Class
+
+
+
+>>>>>>> 0720a4dedc700bf9c1f5b753dad5eb443732c1c3
 }

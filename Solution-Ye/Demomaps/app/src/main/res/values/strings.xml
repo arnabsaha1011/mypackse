@@ -5,4 +5,11 @@
     <string name="fromPlace" />
     <string name="searchText" />
     <string name="addPlace" />
+<<<<<<< HEAD
+=======
+    <string name="action_settings">antion_settings</string>
+    <string name="location_permission_denied" />
+    <string name="permission_required_toast" />
+    <string name="permission_rationale_location" />
+>>>>>>> 0720a4dedc700bf9c1f5b753dad5eb443732c1c3
 </resources>
