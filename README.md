@@ -1,8 +1,5 @@
 # Project for SE'16
-<<<<<<< HEAD
-# Temporary Change
-=======
->>>>>>> 0720a4dedc700bf9c1f5b753dad5eb443732c1c3
+
 
 ## Team members:
 
@@ -30,18 +27,10 @@ upcoming months.
 For more details click on the [link](https://github.com/arnabsaha1011/mypackse/blob/master/New%20Folder/Survey/Feb%201%20report.pdf)
 
 ## March deliverable:
-<<<<<<< HEAD
+
 * Solution 1: Find paths between two locations and save previous searches.
 * Solution 2: Find paths between two or more locations. Manage timeline of each location/path. Itinerary android application. Click on the [link](https://github.com/asaha1/Itinerary) for details
 * Solution 3: Full itinerary application
 
 
-More details upcoming
-=======
-* Solution 1: Find paths between two locations and save previous searches. Click on the map to add new markers.[Click here](https://youtu.be/0HET2h4tnpw)
-* Solution 2: Find paths between two or more locations.  to watch a demo video.
-* Solution 3: Full itinerary application. [Click here](https://youtu.be/Xr5GIIHF4_o) to watch a demo video.
-
-
 For more details click on the [link](https://docs.google.com/presentation/d/1iMTTqjkAjfIR9KV12kleRVFUgW58u_fqsxpd1sPCLtM/edit#slide=id.p3)
->>>>>>> 0720a4dedc700bf9c1f5b753dad5eb443732c1c3
