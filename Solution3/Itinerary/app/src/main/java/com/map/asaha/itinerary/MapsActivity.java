@@ -27,7 +27,8 @@ import java.util.List;
 public class MapsActivity extends FragmentActivity {
     private GoogleMap googleMap;
     private List<String> placesList = null;
-    String places, clear_map = "false";
+    private List<String> timesList = null;
+    String places, times, clear_map = "false";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -45,6 +46,10 @@ public class MapsActivity extends FragmentActivity {
         // Receiving the Data
         places = intent.getStringExtra("places");
         placesList = Utility.getPlacesListFromString(places);
+
+        times = intent.getStringExtra("times");
+        timesList = Utility.getPlacesListFromString(times);
+
         clear_map = intent.getStringExtra("clear_map") == null ? "false" : intent.getStringExtra("clear_map");
         try {
             onSearch();
@@ -84,20 +89,24 @@ public class MapsActivity extends FragmentActivity {
             MapUtility mapUtility = new MapUtility();
 
             // draw the first marker
-            marker = mapUtility.drawMarker(googleMap, place0, placesList.get(0));
+            String startTime = timesList.get(0).equals("Now") ? Utility.getCurrentTime() : timesList.get(0);
+            String startString = "Starting Time = " + startTime;
+            marker = mapUtility.drawMarker(googleMap, place0, startString);
             builder.include(marker.getPosition());
 
-            marker = mapUtility.drawMarker(googleMap, place1, placesList.get(1));
-            builder.include(marker.getPosition());
+            double duration = mapUtility.drawPath(this, googleMap, place0, place1);
+            String durationString = Utility.getTimeFormattedString(startTime, duration, timesList.get(1));
 
-            mapUtility.drawPath(this, googleMap, place0, place1);
+            marker = mapUtility.drawMarker(googleMap, place1, durationString);
+            builder.include(marker.getPosition());
 
             for (int i = 2; i < placesList.size(); i++) {
                 place0 = place1;
                 place1 = MapUtility.getLatLngFromLocationName(this, placesList.get(i));
-                marker = mapUtility.drawMarker(googleMap, place1, placesList.get(i));
+                duration = mapUtility.drawPath(this, googleMap, place0, place1);
+                durationString = Utility.getTimeFormattedString(timesList.get(i - 1), duration, timesList.get(i));
+                marker = mapUtility.drawMarker(googleMap, place1, durationString);
                 builder.include(marker.getPosition());
-                mapUtility.drawPath(this, googleMap, place0, place1);
             }
         }
 

@@ -45,17 +45,20 @@ public class MapUtility {
         return new LatLng(address.getLatitude(), address.getLongitude());
     }
 
-    public void drawPath(FragmentActivity fragmentActivity, GoogleMap googleMap, LatLng latLng1, LatLng latLng2) {
+    public double drawPath(FragmentActivity fragmentActivity, GoogleMap googleMap, LatLng latLng1, LatLng latLng2) {
         // Getting URL to the Google Directions API
         String url = getDirectionsUrl(latLng1, latLng2);
 
         DownloadTask downloadTask = new DownloadTask(fragmentActivity, googleMap);
         // Start downloading json data from Google Directions API
         downloadTask.execute(url);
+        return Utility.calcTime(latLng1.latitude, latLng2.latitude, latLng1.longitude, latLng2.longitude);
     }
 
-    public Marker drawMarker(GoogleMap googleMap, LatLng latLng, String name) {
-        return googleMap.addMarker(new MarkerOptions().position(latLng).title(name));
+    public Marker drawMarker(GoogleMap googleMap, LatLng latLng, String time) {
+        Marker marker = googleMap.addMarker(new MarkerOptions().position(latLng).title(time));
+        marker.showInfoWindow();
+        return marker;
     }
 
 
@@ -85,6 +88,7 @@ public class MapUtility {
     private class DownloadTask extends AsyncTask<String, Void, String> {
         FragmentActivity fragmentActivity;
         GoogleMap googleMap;
+        private volatile String duration;
 
         public DownloadTask(FragmentActivity fragmentActivity, GoogleMap googleMap) {
             this.fragmentActivity = fragmentActivity;
@@ -117,6 +121,7 @@ public class MapUtility {
 
             // Invokes the thread for parsing the JSON data
             parserTask.execute(result);
+            duration = parserTask.getDuration();
         }
     }
 
@@ -167,6 +172,11 @@ public class MapUtility {
     private class ParserTask extends AsyncTask<String, Integer, List<List<HashMap<String, String>>>> {
         FragmentActivity fragmentActivity;
         GoogleMap googleMap;
+        String duration = "";
+
+        public String getDuration() {
+            return duration;
+        }
 
         public ParserTask(FragmentActivity fragmentActivity, GoogleMap googleMap) {
             this.fragmentActivity = fragmentActivity;
@@ -199,7 +209,6 @@ public class MapUtility {
             PolylineOptions lineOptions = null;
             MarkerOptions markerOptions = new MarkerOptions();
             String distance = "";
-            String duration = "";
 
             if (result.size() < 1) {
                 Toast.makeText(fragmentActivity.getBaseContext(), "No Points", Toast.LENGTH_SHORT).show();
@@ -237,6 +246,7 @@ public class MapUtility {
                 lineOptions.addAll(points);
                 lineOptions.width(12);
                 lineOptions.color(Color.BLUE);
+                System.out.println("Duration = " + duration);
             }
 
             //tvDistanceDuration.setText("Distance:" + distance + ", Duration:" + duration);
@@ -250,5 +260,9 @@ public class MapUtility {
         for (Polyline polyline : allPolyLines) {
             polyline.remove();
         }
+    }
+
+    public static int calcTimeFromPlaces(String place1, String place2) {
+        return 0;
     }
 }
