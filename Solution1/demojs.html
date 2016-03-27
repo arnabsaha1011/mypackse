@@ -81,10 +81,12 @@
     <div id="mode-selector" class="controls">
 
       <input type="button" name="type" id="direction" value="Direction" onclick="directions()">
-
-      <input type="button" name="type" id="hide" value="Hide">
         
-      <input type="button" name="type" id="show" value="Show">
+      <input type="button" name="type" id="hide" value="Clear" onclick="clearMarkers()">
+
+      <input type="button" name="type" id="hide" value="Hide" onclick="hidePlaces()">
+        
+      <input type="button" name="type" id="show" value="Show" onclick="showPlaces()">
     </div>
       
     <div id="Ptablediv">
@@ -111,6 +113,9 @@
       var markers = [];
       var places = [];
       var map;
+      var show_places = [];
+      var directionsService;
+      var directionsDisplay;
         
       function initMap() {
           map = new google.maps.Map(document.getElementById('map'), {
@@ -183,7 +188,9 @@
             google.maps.event.addListener(marker, "click", function () {
                 var marker = this;
                 var content = marker.title;
-                content += "<br /><input type = 'button' value = 'Add place' onclick = 'insRow(" + marker.id + ");' />";
+                content += "<br /><input type = 'button' value = 'Add place' onclick = 'insRow(" + marker.id + ");' />"
+                        + "<br /><input type = 'button' value = 'Parking' onclick = 'SearchParking(" + marker.id + ");' />"
+                        + "<br /><input type = 'button' value = 'Restaurants' onclick = 'SearchRestaurants(" + marker.id + ");' />";
                 var infoWindow = new google.maps.InfoWindow({
                     content: content
                 });
@@ -205,39 +212,104 @@
 
           
       }
+        
+      function clearMarkers()
+      {
+          markers.forEach(function(marker) {
+            marker.setMap(null);
+          });
+          
+          show_places.forEach(function(marker) {
+            marker.setMap(null);
+          });
+          
+          places.forEach(function(place) {
+             var marker = new google.maps.Marker({
+                position: place.position,
+                map: map
+              });
+              show_places.push(marker);
+          });
+      }
+        
+        
+      function showPlaces()
+      {
+          
+          
+          show_places.forEach(function(marker) {
+            marker.setMap(null);
+          });
+          
+          places.forEach(function(place) {
+             var marker = new google.maps.Marker({
+                position: place.position,
+                map: map
+              });
+              show_places.push(marker);
+          });
+          document.getElementById("Ptablediv").style.visibility="visible";
+          directionsDisplay.setMap(map);
+          
+      }
+        
+      
+      function hidePlaces()
+      {
+          show_places.forEach(function(marker) {
+              marker.setVisible(false);
+          });
+          document.getElementById("Ptablediv").style.visibility="hidden";
+          directionsDisplay.setMap(null);
+      }
       
       function directions()
       {
-
-          for(var i = 0; i < places.length-1; i++)
-          {
-              marker1 = places[i];
-              marker2 = places[i+1];
-              var directionsService = new google.maps.DirectionsService();
-              var directionsDisplay = new google.maps.DirectionsRenderer({
+          origin = places[0].position;
+          var len = places.length;
+          destination = places[len-1].position;
+          var waypoints = [];
+          
+          if( len > 2)
+              {
+                  for (var i = 1; i < len-1; i++) {
+                        var address = places[i].position;
+                        if (address !== "") {
+                            waypoints.push({
+                                location: address,
+                                stopover: true
+                            });
+                        }
+                    }
+              }
+          
+          
+          directionsService = new google.maps.DirectionsService();
+          directionsDisplay = new google.maps.DirectionsRenderer({
                   draggable: true,
                   map: map
-                });
-              displayRoute(marker1.position, marker2.position, directionsService, directionsDisplay);
-          }
+            });
+              
+          directionsService.route({
+              origin: origin,
+              destination: destination,
+              waypoints: waypoints,
+              optimizeWaypoints: true,
+              travelMode: google.maps.TravelMode.DRIVING,
+              avoidTolls: true
+            }, function(response, status) {
+              if (status === google.maps.DirectionsStatus.OK) {
+                directionsDisplay.setDirections(response);
+              } else {
+                alert('Could not display directions due to: ' + status);
+              }
+            });
+          
+          show_places.forEach(function(marker) {
+              marker.setVisible(false);
+          });
           
       }
-      
-      function displayRoute(origin, destination, service, display) {
-        service.route({
-          origin: origin,
-          destination: destination,
-          travelMode: google.maps.TravelMode.DRIVING,
-          avoidTolls: true
-        }, function(response, status) {
-          if (status === google.maps.DirectionsStatus.OK) {
-            display.setDirections(response);
-          } else {
-            alert('Could not display directions due to: ' + status);
-          }
-        });
-      }
-
       
         
       function deleteRow(row)
@@ -245,7 +317,7 @@
             var index=row.parentNode.parentNode.rowIndex;
             
             document.getElementById('PTable').deleteRow(index);
-            places.splice(index,1);
+            places.splice(index-1,1);
             
             var t = document.getElementById('PTable');
             //alert("length: " + places.length);
@@ -255,8 +327,7 @@
             }
         }
 
-
-        function insRow(id)
+      function insRow(id)
         {
             var marke
             
@@ -288,6 +359,82 @@
                     x.appendChild( new_row );
                 }
         }
+
+      function SearchParking(id)
+      {
+        var marke
+
+        for (var i = 0; i < markers.length; i++) 
+        {
+          if (markers[i].id == id) 
+            {               
+              marker = markers[i]
+            }
+        }
+
+        var position = marker.position;
+
+        var service = new google.maps.places.PlacesService(map);
+        service.nearbySearch({
+          location: position,
+          radius: 1000,
+          type: ['parking']
+        }, callback);
+
+      }
+
+      function SearchRestaurants(id)
+      {
+        
+        var marke
+
+        for (var i = 0; i < markers.length; i++) 
+        {
+          if (markers[i].id == id) 
+            {               
+              marker = markers[i]
+            }
+        }
+
+        var position = marker.position;
+
+        var service = new google.maps.places.PlacesService(map);
+        service.nearbySearch({
+          location: position,
+          radius: 1000,
+          type: ['restaurant']
+        }, callback);
+      }
+
+      function callback(results, status) {
+        if (status === google.maps.places.PlacesServiceStatus.OK) {
+          for (var i = 0; i < results.length; i++) {
+            createMarker(results[i]);
+          }
+        }
+      }
+
+      function createMarker(place) {
+        var placeLoc = place.geometry.location;
+        var marker = new google.maps.Marker({
+          map: map,
+          position: place.geometry.location,
+          icon: {
+            path: google.maps.SymbolPath.CIRCLE,
+            scale: 5
+          }
+        });
+
+        google.maps.event.addListener(marker, 'click', function() {
+
+                var marker = this;
+                var content = "place";
+                var infoWindow = new google.maps.InfoWindow({
+                    content: content
+                });
+                infoWindow.open(map, marker);
+        });
+      }
 
     </script>
       
