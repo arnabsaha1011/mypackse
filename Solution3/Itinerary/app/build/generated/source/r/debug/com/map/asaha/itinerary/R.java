@@ -2239,12 +2239,13 @@ containing a value of this type.
         public static final int ifRoom=0x7f0d0024;
         public static final int image=0x7f0d004d;
         public static final int info=0x7f0d0093;
+        public static final int interval1=0x7f0d00a1;
         public static final int light=0x7f0d002c;
         public static final int line1=0x7f0d008d;
         public static final int line3=0x7f0d0091;
         public static final int listMode=0x7f0d000a;
         public static final int list_item=0x7f0d004f;
-        public static final int location=0x7f0d009f;
+        public static final int location=0x7f0d00a0;
         public static final int logo_only=0x7f0d003d;
         public static final int map=0x7f0d0079;
         public static final int map2=0x7f0d0077;
@@ -2261,8 +2262,8 @@ containing a value of this type.
         public static final int none=0x7f0d000f;
         public static final int normal=0x7f0d000b;
         public static final int parentPanel=0x7f0d0054;
-        public static final int place_1=0x7f0d009e;
-        public static final int place_2=0x7f0d00a0;
+        public static final int place_1=0x7f0d009f;
+        public static final int place_2=0x7f0d00a2;
         public static final int place_autocomplete_clear_button=0x7f0d0097;
         public static final int place_autocomplete_powered_by_google=0x7f0d0099;
         public static final int place_autocomplete_prediction_primary_text=0x7f0d009b;
@@ -2308,6 +2309,7 @@ containing a value of this type.
         public static final int src_in=0x7f0d0017;
         public static final int src_over=0x7f0d0018;
         public static final int standard=0x7f0d0028;
+        public static final int startingTime=0x7f0d009e;
         public static final int status_bar_latest_event_content=0x7f0d008a;
         public static final int stop=0x7f0d0087;
         public static final int strict_sandbox=0x7f0d0032;
@@ -2472,14 +2474,16 @@ containing a value of this type.
         public static final int mr_media_route_controller_stop=0x7f070038;
         public static final int mr_system_route_name=0x7f070039;
         public static final int mr_user_route_category_name=0x7f07003a;
+        public static final int pick_time=0x7f070050;
         public static final int place_autocomplete_clear_button=0x7f07003b;
         public static final int place_autocomplete_search_hint=0x7f07003c;
-        public static final int searchText=0x7f070050;
-        public static final int start_location=0x7f070051;
+        public static final int searchText=0x7f070051;
+        public static final int start_location=0x7f070052;
+        public static final int start_time=0x7f070053;
         public static final int status_bar_notification_info_overflow=0x7f07003d;
-        public static final int store_picture_message=0x7f070052;
-        public static final int store_picture_title=0x7f070053;
-        public static final int title_activity_maps=0x7f070054;
+        public static final int store_picture_message=0x7f070054;
+        public static final int store_picture_title=0x7f070055;
+        public static final int title_activity_maps=0x7f070056;
         public static final int wallet_buy_button_place_holder=0x7f07003e;
     }
     public static final class style {
