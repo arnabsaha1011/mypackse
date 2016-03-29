@@ -31,10 +31,14 @@ android:orientation="vertical">
 
     <Button
 <<<<<<< HEAD
+        android:layout_width="36dp"
+=======
+<<<<<<< HEAD
         android:layout_width="wrap_content"
 =======
         android:layout_width="62dp"
 >>>>>>> 0720a4dedc700bf9c1f5b753dad5eb443732c1c3
+>>>>>>> 08a7a329a55e1b8872fe2e88dff2797e14d55905
         android:layout_height="wrap_content"
         android:onClick="onAdd"
         android:text="+"
@@ -49,11 +53,23 @@ android:orientation="vertical">
 =======
 
     <Button
-        android:layout_width="wrap_content"
+        android:layout_width="123dp"
         android:layout_height="wrap_content"
-        android:text="Route"
+        android:text="Direction"
         android:id="@+id/directionbutton"
         android:onClick="onDirection" />
+</LinearLayout>
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content">
+
+    <Button
+        android:layout_width="379dp"
+        android:layout_height="36dp"
+        android:text="Clear All"
+        android:id="@+id/clearbutton"
+        android:onClick="onClear" />
 
 </LinearLayout>
 
@@ -64,6 +80,9 @@ android:orientation="vertical">
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/map"
     android:name="com.google.android.gms.maps.SupportMapFragment"
+<<<<<<< HEAD
+    android:layout_width="386dp"
+=======
     android:layout_width="match_parent"
 <<<<<<< HEAD
     android:layout_height="467dp"
@@ -87,6 +106,7 @@ android:orientation="vertical">
         android:onClick="onDirection" />
 </LinearLayout>
 =======
+>>>>>>> 08a7a329a55e1b8872fe2e88dff2797e14d55905
     android:layout_height="510dp"
     tools:context="com.example.ye.demomaps.MapsActivity" />
 

@@ -84,6 +84,8 @@ public class MapsActivity extends FragmentActivity {
             public void onMapClick(LatLng point) {
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
                 // Already two locations
 =======
 
@@ -94,6 +96,7 @@ public class MapsActivity extends FragmentActivity {
                 }
                 */
 
+>>>>>>> 08a7a329a55e1b8872fe2e88dff2797e14d55905
                 // Adding new item to the ArrayList
                 markerPoints.add(point);
 
@@ -118,7 +121,8 @@ public class MapsActivity extends FragmentActivity {
                 }
 
                 // Add new marker to the Google Map Android API V2
-                map.addMarker(options);
+                map.addMarker(options.draggable(true));
+                map.moveCamera(CameraUpdateFactory.newLatLngZoom(point, 10));
 
             }
         });
@@ -205,6 +209,20 @@ public class MapsActivity extends FragmentActivity {
 
         }
     }
+
+
+
+    public void onClear(View view) throws IOException {
+         if (markerPoints.size() > 1) {
+             markerPoints.clear();
+             map.clear();
+         }
+        EditText place_2 = (EditText) findViewById(R.id.place);
+        place_2.setText("");
+
+        Toast.makeText(getBaseContext(), "Map Cleared", Toast.LENGTH_SHORT).show();
+    }
+
 
     private String getDirectionsUrl(LatLng origin, LatLng dest) {
 
