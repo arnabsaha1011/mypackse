@@ -285,10 +285,7 @@
           
           
           directionsService = new google.maps.DirectionsService();
-          directionsDisplay = new google.maps.DirectionsRenderer({
-                  draggable: true,
-                  map: map
-            });
+
               
           directionsService.route({
               origin: origin,
@@ -299,7 +296,22 @@
               avoidTolls: true
             }, function(response, status) {
               if (status === google.maps.DirectionsStatus.OK) {
+
+                var point = response.routes[ 0 ].legs[ 0 ];
+                traveltime = 'Estimated travel time: ' + point.duration.text + ' (' + point.distance.text + ')';
+                alert(traveltime);
+                var infoWindow = new google.maps.InfoWindow({
+                    content: traveltime
+                });
+
+                  directionsDisplay = new google.maps.DirectionsRenderer({
+                  suppressInfoWindows: infoWindow,
+                  draggable: true,
+                  map: map
+                  });
                 directionsDisplay.setDirections(response);
+
+
               } else {
                 alert('Could not display directions due to: ' + status);
               }
