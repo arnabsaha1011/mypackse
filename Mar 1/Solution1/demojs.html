@@ -78,27 +78,19 @@
       
     <input id="pac-input" class="controls" type="text" placeholder="Search Box">
       
-    <div id="mode-selector" class="controls">
-
-      <input type="button" name="type" id="direction" value="Direction" onclick="directions()">
-        
-      <input type="button" name="type" id="hide" value="Clear" onclick="clearMarkers()">
-
-      <input type="button" name="type" id="hide" value="Hide" onclick="hidePlaces()">
-        
-      <input type="button" name="type" id="show" value="Show" onclick="showPlaces()">
-    </div>
-      
     <div id="Ptablediv">
     <table id="PTable" border="1">
         <tr>
-            <td>Marker</td>
+            <td>Index</td>
             <td>Place</td>
-            <td></td>
+            <td>Distance</td>
+            <td>Time</td>
         </tr>
         <tr>
             <td id="Pindex">1</td>
             <td><input size=15 type="text" id="latbox"/></td>
+            <td><input size=5 type="text" id="latbox"/></td>
+            <td><input size=5 type="text" id="latbox"/></td>
             <td><input type="button" id="delPbutton" value="Remove" onclick="deleteRow(this)"/></td>
         </tr>
     </table>
@@ -113,9 +105,10 @@
       var markers = [];
       var places = [];
       var map;
-      var show_places = [];
+      var mapPoints = new Array();
+
       var directionsService;
-      var directionsDisplay;
+      var _directionsRenderer = '';
         
       function initMap() {
           map = new google.maps.Map(document.getElementById('map'), {
@@ -130,6 +123,7 @@
           fullscreenControl: false,
         });
 
+      
         // Create the search box and link it to the UI element.
         var input = document.getElementById('pac-input');
         var searchBox = new google.maps.places.SearchBox(input);
@@ -138,7 +132,7 @@
         // Create the marker panel
         var modes = document.getElementById('mode-selector');
         map.controls[google.maps.ControlPosition.TOP_LEFT].push(modes);
-          
+        
         var placeTable = document.getElementById('Ptablediv');
         map.controls[google.maps.ControlPosition.LEFT_TOP].push(placeTable);
 
@@ -195,7 +189,7 @@
                     content: content
                 });
                 infoWindow.open(map, marker);
-                //alert("location is :" + content)               
+               
             });
 
             markers.push(marker);
@@ -210,123 +204,181 @@
           map.fitBounds(bounds);
         });
 
-          
-      }
-        
-      function clearMarkers()
-      {
-          markers.forEach(function(marker) {
-            marker.setMap(null);
-          });
-          
-          show_places.forEach(function(marker) {
-            marker.setMap(null);
-          });
-          
-          places.forEach(function(place) {
-             var marker = new google.maps.Marker({
-                position: place.position,
-                map: map
-              });
-              show_places.push(marker);
-          });
-      }
-        
-        
-      function showPlaces()
-      {
-          
-          
-          show_places.forEach(function(marker) {
-            marker.setMap(null);
-          });
-          
-          places.forEach(function(place) {
-             var marker = new google.maps.Marker({
-                position: place.position,
-                map: map
-              });
-              show_places.push(marker);
-          });
-          document.getElementById("Ptablediv").style.visibility="visible";
-          directionsDisplay.setMap(map);
-          
-      }
-        
-      
-      function hidePlaces()
-      {
-          show_places.forEach(function(marker) {
-              marker.setVisible(false);
-          });
-          document.getElementById("Ptablediv").style.visibility="hidden";
-          directionsDisplay.setMap(null);
-      }
-      
-      function directions()
-      {
-          origin = places[0].position;
-          var len = places.length;
-          destination = places[len-1].position;
-          var waypoints = [];
-          
-          if( len > 2)
-              {
-                  for (var i = 1; i < len-1; i++) {
-                        var address = places[i].position;
-                        if (address !== "") {
-                            waypoints.push({
-                                location: address,
-                                stopover: true
-                            });
-                        }
-                    }
-              }
-          
-          
-          directionsService = new google.maps.DirectionsService();
+        directionsService = new google.maps.DirectionsService();
 
-              
-          directionsService.route({
-              origin: origin,
-              destination: destination,
-              waypoints: waypoints,
-              optimizeWaypoints: true,
-              travelMode: google.maps.TravelMode.DRIVING,
-              avoidTolls: true
-            }, function(response, status) {
-              if (status === google.maps.DirectionsStatus.OK) {
-
-                var point = response.routes[ 0 ].legs[ 0 ];
-                traveltime = 'Estimated travel time: ' + point.duration.text + ' (' + point.distance.text + ')';
-                alert(traveltime);
-                var infoWindow = new google.maps.InfoWindow({
-                    content: traveltime
-                });
-
-                  directionsDisplay = new google.maps.DirectionsRenderer({
-                  suppressInfoWindows: infoWindow,
+        _directionsRenderer = new google.maps.DirectionsRenderer({
                   draggable: true,
                   map: map
                   });
-                directionsDisplay.setDirections(response);
-
-
-              } else {
-                alert('Could not display directions due to: ' + status);
-              }
-            });
-          
-          show_places.forEach(function(marker) {
-              marker.setVisible(false);
-          });
           
       }
       
-        
+
+      function insRow(id)
+        {
+
+          var marker
+
+            for (var i = 0; i < markers.length; i++) 
+            {
+                if (markers[i].id == id) 
+                {               
+                    marker = markers[i]
+                }
+            }
+
+
+          mapPoints.push(marker);
+
+          getRoutePointsAndWaypoints();
+
+          
+            places.push(marker);
+            var x=document.getElementById('PTable');
+            
+            if(places.length == 1)
+                {
+                    var inp1 = x.rows[1].cells[1].getElementsByTagName('input')[0];
+                    inp1.value = marker.title;
+
+                    var inp2 = x.rows[1].cells[2].getElementsByTagName('input')[0];
+                    inp2.value = 0;
+
+                    var inp3 = x.rows[1].cells[3].getElementsByTagName('input')[0];
+                    inp3.value = 0;
+                }
+            else
+                {
+                    
+                    var new_row = x.rows[1].cloneNode(true);
+                    var len = places.length;
+                    new_row.cells[0].innerHTML = len;
+
+                    var inp1 = new_row.cells[1].getElementsByTagName('input')[0];
+                    inp1.value = marker.title;
+
+                    var inp2 = new_row.cells[2].getElementsByTagName('input')[0];
+
+                    var inp3 = new_row.cells[3].getElementsByTagName('input')[0];
+
+
+
+                    _request = {
+                    origin: places[places.length-1].position,
+                    destination: places[places.length-2].position,
+                    travelMode: google.maps.DirectionsTravelMode.DRIVING
+                        };
+                    directionsService.route(_request, function (_response, _status) {
+                        if (_status == google.maps.DirectionsStatus.OK) {
+                            var point = _response.routes[ 0 ].legs[ 0 ];
+                            alert("here");
+                            inp2.value = point.distance.text;
+                            inp3.value = point.duration.text;
+                            alert(inp3.value);
+                        }
+                    });
+
+                    x.appendChild( new_row );
+                }
+        }
+
+      //getRoutePointsAndWaypoints() will help you to pass points and waypoints to drawRoute() function
+      function getRoutePointsAndWaypoints() {
+          //Define a variable for waypoints.
+          var _waypoints = new Array();
+       
+          if (mapPoints.length > 2) //Waypoints will be come.
+          {
+              for (var j = 1; j < mapPoints.length - 1; j++) {
+                  var address = mapPoints[j].position;
+                  if (address !== "") {
+                      _waypoints.push({
+                          location: address,
+                          stopover: true  //stopover is used to show marker on map for waypoints
+                      });
+                  }
+              }
+              //Call a drawRoute() function
+              drawRoute(mapPoints[0], mapPoints[mapPoints.length - 1], _waypoints);
+          } else if (mapPoints.length > 1) {
+              //Call a drawRoute() function only for start and end locations
+              drawRoute(mapPoints[mapPoints.length - 2], mapPoints[mapPoints.length - 1], _waypoints);
+          } else {
+              //Call a drawRoute() function only for one point as start and end locations.
+              drawRoute(mapPoints[mapPoints.length - 1], mapPoints[mapPoints.length - 1], _waypoints);
+          }
+      }
+
+      //drawRoute() will help actual draw the route on map.
+      function drawRoute(origin, destination, _waypoints) {
+          //Define a request variable for route .
+          var _request = '';
+
+          originAddress = origin.position;
+          destinationAddress = destination.position;
+          //This is for more then two locatins
+          if (_waypoints.length > 0) {
+              _request = {
+                  origin: originAddress,
+                  destination: destinationAddress,
+                  waypoints: _waypoints, //an array of waypoints
+                  optimizeWaypoints: true, //set to true if you want google to determine the shortest route or false to use the order specified.
+                  travelMode: google.maps.DirectionsTravelMode.DRIVING
+              };
+          } else {
+              //This is for one or two locations. Here noway point is used.
+              _request = {
+                  origin: originAddress,
+                  destination: destinationAddress,
+                  travelMode: google.maps.DirectionsTravelMode.DRIVING
+              };
+          }
+          //This will take the request and draw the route and return response and status as output
+          directionsService.route(_request, function (_response, _status) {
+              if (_status == google.maps.DirectionsStatus.OK) {
+                  _directionsRenderer.setDirections(_response);
+              }
+          });
+      }
+
+
       function deleteRow(row)
         {
-            var index=row.parentNode.parentNode.rowIndex;
+
+          var index=row.parentNode.parentNode.rowIndex;
+
+          if (confirm("Are you sure want to delete this location?") == true) {
+              var _temPoint = new Array();
+              for (var w = 0; w < mapPoints.length; w++) {
+                  if (index != w + 1) {
+                      _temPoint.push(mapPoints[w]);
+                  }
+              }
+       
+              mapPoints = new Array();
+              for (var y = 0; y < _temPoint.length; y++) {
+                  mapPoints.push(_temPoint[y]);
+              }
+       
+              getRoutePointsAndWaypoints();
+          }
+
+
+                    _request = {
+                    origin: places[places.length-1].position,
+                    destination: places[places.length-2].position,
+                    travelMode: google.maps.DirectionsTravelMode.DRIVING
+                        };
+                    directionsService.route(_request, function (_response, _status) {
+                        if (_status == google.maps.DirectionsStatus.OK) {
+                            var point = _response.routes[ 0 ].legs[ 0 ];
+                            alert("here");
+                            inp2.value = point.distance.text;
+                            inp3.value = point.duration.text;
+                            alert(inp3.value);
+                        }
+                    });
+
             
             document.getElementById('PTable').deleteRow(index);
             places.splice(index-1,1);
@@ -339,38 +391,6 @@
             }
         }
 
-      function insRow(id)
-        {
-            var marke
-            
-            for (var i = 0; i < markers.length; i++) 
-            {
-                if (markers[i].id == id) 
-                {               
-                    marker = markers[i]
-                }
-            }
-            places.push(marker);
-            var x=document.getElementById('PTable');
-            
-            if(places.length == 1)
-                {
-                    var inp1 = x.rows[1].cells[1].getElementsByTagName('input')[0];
-                    inp1.value = marker.title;
-                    
-                }
-            else
-                {
-                    
-                    var new_row = x.rows[1].cloneNode(true);
-                    var len = places.length;
-                    new_row.cells[0].innerHTML = len;
-
-                    var inp1 = new_row.cells[1].getElementsByTagName('input')[0];
-                    inp1.value = marker.title;
-                    x.appendChild( new_row );
-                }
-        }
 
       function SearchParking(id)
       {
