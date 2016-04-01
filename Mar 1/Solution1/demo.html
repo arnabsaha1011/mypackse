@@ -39,6 +39,11 @@
     value="Nearby Search" style="width:200px"/></br>
     <input type="button" id="button5" onclick="alert(count)" 
     value="Click times" style="width:200px"/></br>
+    <input type="textfield" id="select1" size="9" placeholder="Select a place"/>
+    <input type="button" id="button6" onclick="addselectplace()" 
+    value="Select" style="width:100px"/></br>
+    <input type="button" id="button7" onclick="showplace()" 
+    value="show all place" style="width:200px"/></br>
     </form>
     </div>
     <div id="map"></div>
@@ -48,9 +53,12 @@
       var service;
       //this array is the final array 
       var selected=[];
+      //creat new marker for nearby select
       var marker1;
+
       var n=1;
       // initial function
+    //========================================
       function initMap() {
         map = new google.maps.Map(document.getElementById('map'), {
         center: {lat: 35.771518, lng: -78.674357},
@@ -66,17 +74,21 @@
         });
       
   }
-  //**************************************
-
-  
+    //**************************************
       var i=1;
+      //input serach place array
       var address=[];
+      //store searched place Lonlat
       var lonlat=[];
+      //nearby markers
+      var markers=[];
+      //markers lable for search
       var labels = '123456789';
+      //markers lable index
       var labelIndex = 0;
       
       // use geocode to get lan and lat to marker
-  function geocodeAddress(geocoder, resultsMap) {
+      function geocodeAddress(geocoder, resultsMap) {
         
         address[i] = document.getElementById('text1').value;
         
@@ -85,7 +97,6 @@
           if (status === google.maps.GeocoderStatus.OK) {
             resultsMap.setCenter(results[0].geometry.location);
             lonlat[i]=results[0].geometry.location; // store langitude and latitude in array
-            //alert(lonlat[1]);
             var marker = new google.maps.Marker({
               map: resultsMap,
               position: results[0].geometry.location,
@@ -98,146 +109,147 @@
           }
         });
       }
-  
-  //search nearby place
-  var markers=[];
-  function nearbySearch(){
-    //var p = lonlat[1];
-    markers=[];
-    var k = document.getElementById('textnp').value;
-    var nearbys = document.getElementById('textns').value;
-    //alert(lonlat[1]);
-    //var pyrmont = new google.maps.LatLng(35.771518,-78.674357);
-    var request = {
-      location: lonlat[k],
-      radius: '50',
-      query: nearbys
-      //query: 'restaurant'
-    };
-    service = new google.maps.places.PlacesService(map);
-    service.textSearch(request, callback);
+    //==========================================
+      //search nearby place
+      function nearbySearch(){
+        markers=[];
+        var k = document.getElementById('textnp').value;
+        //selected.push(lonlat[k]);
+        var nearbys = document.getElementById('textns').value;
+        var request = {
+          location: lonlat[k],
+          radius: '50',
+          query: nearbys
+          //query: 'restaurant'
+        };
+        service = new google.maps.places.PlacesService(map);
+        service.textSearch(request, callback);
 
-    function callback(results, status) {
-    if (status == google.maps.places.PlacesServiceStatus.OK) {
-      for (var j = 0; j < results.length; j++) {
-        var place = results[j];
-        //markers[j]=results[j];
-        createMarker(results[j]);
-        //
-      }
-    }
-  }
-    //make users can choose nearby places
-    var uniquePId = 1;
+        function callback(results, status) {
+          if (status == google.maps.places.PlacesServiceStatus.OK) {
+            for (var j = 0; j < results.length; j++) {
+              var place = results[j];
+              createMarker(results[j]);
+            }
+          }
+        }
+        //make users can choose nearby places
+        var uniquePId = 1;
     
+        function createMarker(place) {
+          var placeLoc = place.geometry.location;
+          marker1 = new google.maps.Marker({
+            map: map,
+            icon: 'http://google-maps-icons.googlecode.com/files/sailboat-tourism.png',
+            id: uniquePId,
+            position: place.geometry.location
+          });
+          uniquePId++;
+          //create infor window to choose
+          google.maps.event.addListener(marker1, "click", function () {
+            var marker1 = this;
+            var content = place.name;
+            content += "<br /><input type = 'button' value = 'Add place' onclick = 'addplace(" + marker1.id + ");' />";
+            var infoWindow = new google.maps.InfoWindow({
+              content: content
+            });
+            infoWindow.open(map, marker1);           
+          });
+          markers.push(marker1);
+        }
+      }
 
-    function createMarker(place) {
-    var placeLoc = place.geometry.location;
-    marker1 = new google.maps.Marker({
-      map: map,
-      icon: 'http://google-maps-icons.googlecode.com/files/sailboat-tourism.png',
-      id: uniquePId,
-      position: place.geometry.location
-    });
-    uniquePId++;
-    //create infor window to choose
-    google.maps.event.addListener(marker1, "click", function () {
-                var marker1 = this;
-                //alert(this);
-                var content = place.name;
-                content += "<br /><input type = 'button' value = 'Add place' onclick = 'addplace(" + marker1.id + ");' />";
-                var infoWindow = new google.maps.InfoWindow({
-                    content: content
-                });
-                infoWindow.open(map, marker1);
-                //alert("location is :" + content)               
-    });
-    markers.push(marker1);
-  }
-}
-    function addplace(id){
-      //alert(markers.length);
-      for (var m = 0; m < markers.length; m++) {
-        if (markers[m].id == id) 
-            {               
-              //selected[n] = markers[m].getPosition();
-              var pos = markers[m].getPosition();
-              //alert(selected[n]);
-              alert(n);
-              markers.forEach(function(marker) {
-               marker.setMap(null);
-              });
-              var markerr = new google.maps.Marker({
-                map: map,
-                icon: 'http://google-maps-icons.googlecode.com/files/sailboat-tourism.png',
-                //id: uniquePId,
-                position: pos
-              });
-              selected[n] = pos;
-              alert(selected[n]);
-              n++;
-             }
-      } 
-    }
+    //===========================================================
+    //add select place into final store array  
+      function addselectplace(){
+        var temp = document.getElementById('select1').value;
+        selected.push(lonlat[temp]);
+        //alert(selected[0]);
+        //alert(selected[1]);
+      }
+    
+    //==========================================================
+    //list all the selected place include nearby search selected(in order) on the web
+      function showplace(){
+        //var 
+      }
+
+    //========================================================  
+      function addplace(id){
+        for (var m = 0; m < markers.length; m++) {
+          if (markers[m].id == id) {               
+            var pos = markers[m].getPosition();
+            alert(n);
+            markers.forEach(function(marker) {
+              marker.setMap(null);
+            });
+            var markerr = new google.maps.Marker({
+              map: map,
+              icon: 'http://google-maps-icons.googlecode.com/files/sailboat-tourism.png',
+              position: pos
+            });
+            //selected[n] = pos;
+            selected.push(pos);
+            //alert(selected[n]);
+            n++;
+          }
+        } 
+      }
  
     //=======================================
       //draw direction line between place
       function displayRoute() {
+        //var start = new google.maps.LatLng(28.6, 77.120291);
+        //var end = new google.maps.LatLng(28.72082, 77.107241);
+        var place1 = document.getElementById('place1').value;
+        var place2 = document.getElementById('place2').value;
+        var start = lonlat[place1];
+        var end = lonlat[place2];
+        var directionsDisplay = new google.maps.DirectionsRenderer();// also, constructor can get "DirectionsRendererOptions" object
+        directionsDisplay.setMap(map); // map should be already initialized.
 
-      //var start = new google.maps.LatLng(28.6, 77.120291);
-      //var end = new google.maps.LatLng(28.72082, 77.107241);
-      //alert(lonlat[0]);
-      var place1 = document.getElementById('place1').value;
-      var place2 = document.getElementById('place2').value;
-      var start = lonlat[place1];
-      var end = lonlat[place2];
-      //alert(start);
-      var directionsDisplay = new google.maps.DirectionsRenderer();// also, constructor can get "DirectionsRendererOptions" object
-      directionsDisplay.setMap(map); // map should be already initialized.
-
-      var request = {
+        var request = {
           origin : start,
           destination : end,
           travelMode : google.maps.TravelMode.DRIVING
-      };
-      var directionsService = new google.maps.DirectionsService(); 
-      directionsService.route(request, function(response, status) {
+        };
+        var directionsService = new google.maps.DirectionsService(); 
+        directionsService.route(request, function(response, status) {
           if (status == google.maps.DirectionsStatus.OK) {
               directionsDisplay.setDirections(response);
           }
-      });
-    }
-    //===============================
+        });
+      }
+    //============================================
     //count input by keybord
-    var countkey = 0;
-    $(document).ready(function(){
+      var countkey = 0;
+      $(document).ready(function(){
         $("input").keypress(function(){
             $("span").text(countkey += 1);
         });
-    });
+      });
 
-    //===============================
+    //============================================
     //count user click numbers
-    var count=0;
-    function mouseDown() {
-      count++;
-      //alert(count);
-    }
-    //================================
+      var count=0;
+      function mouseDown() {
+        count++;
+      }
+    //=============================================
 
     // clear everything in the web. init it
-    function clearall(){
-      initMap();
-      document.getElementById('text1').value = "";
-      document.getElementById('place1').value = "";
-      document.getElementById('place2').value = "";
-      var i=1;
-      var address=[];
-      var lonlat=[];
-      var labels = '123456789';
-      var labelIndex = 0;
-    }
-    </script>
+      function clearall(){
+        initMap();
+        document.getElementById('text1').value = "";
+        document.getElementById('place1').value = "";
+        document.getElementById('place2').value = "";
+        var i=1;
+        var address=[];
+        var lonlat=[];
+        var labels = '123456789';
+        var labelIndex = 0;
+      }
+      </script>
 
     <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyC_aOE6jvjAp5oWwNPT5Fgn6kukWFRphvQ&signed_in=true&libraries=places&callback=initMap"
     async defer></script>
