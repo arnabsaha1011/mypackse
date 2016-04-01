@@ -43,8 +43,13 @@
     </div>
     <div id="map"></div>
     <script>
+    //=======================================
       var map;      
       var service;
+      //this array is the final array 
+      var selected=[];
+      var marker1;
+      var n=1;
       // initial function
       function initMap() {
         map = new google.maps.Map(document.getElementById('map'), {
@@ -53,10 +58,6 @@
         });
 
       var searchBox = new google.maps.places.SearchBox(document.getElementById('text1'));
-
-      //var searchBox2 = new google.maps.places.SearchBox(document.getElementById('text2'));
-       //var searchBox = new google.maps.places.SearchBox(input);
-      //map.controls[google.maps.ControlPosition.TOP_LEFT].push(document.getElementById('text1'));
 
       var geocoder = new google.maps.Geocoder();
 
@@ -99,15 +100,17 @@
       }
   
   //search nearby place
+  var markers=[];
   function nearbySearch(){
     //var p = lonlat[1];
+    markers=[];
     var k = document.getElementById('textnp').value;
     var nearbys = document.getElementById('textns').value;
     //alert(lonlat[1]);
     //var pyrmont = new google.maps.LatLng(35.771518,-78.674357);
     var request = {
       location: lonlat[k],
-      radius: '100',
+      radius: '50',
       query: nearbys
       //query: 'restaurant'
     };
@@ -118,22 +121,66 @@
     if (status == google.maps.places.PlacesServiceStatus.OK) {
       for (var j = 0; j < results.length; j++) {
         var place = results[j];
+        //markers[j]=results[j];
         createMarker(results[j]);
+        //
       }
     }
   }
+    //make users can choose nearby places
+    var uniquePId = 1;
+    
 
     function createMarker(place) {
     var placeLoc = place.geometry.location;
-    var marker = new google.maps.Marker({
+    marker1 = new google.maps.Marker({
       map: map,
       icon: 'http://google-maps-icons.googlecode.com/files/sailboat-tourism.png',
+      id: uniquePId,
       position: place.geometry.location
     });
+    uniquePId++;
+    //create infor window to choose
+    google.maps.event.addListener(marker1, "click", function () {
+                var marker1 = this;
+                //alert(this);
+                var content = place.name;
+                content += "<br /><input type = 'button' value = 'Add place' onclick = 'addplace(" + marker1.id + ");' />";
+                var infoWindow = new google.maps.InfoWindow({
+                    content: content
+                });
+                infoWindow.open(map, marker1);
+                //alert("location is :" + content)               
+    });
+    markers.push(marker1);
   }
 }
+    function addplace(id){
+      //alert(markers.length);
+      for (var m = 0; m < markers.length; m++) {
+        if (markers[m].id == id) 
+            {               
+              //selected[n] = markers[m].getPosition();
+              var pos = markers[m].getPosition();
+              //alert(selected[n]);
+              alert(n);
+              markers.forEach(function(marker) {
+               marker.setMap(null);
+              });
+              var markerr = new google.maps.Marker({
+                map: map,
+                icon: 'http://google-maps-icons.googlecode.com/files/sailboat-tourism.png',
+                //id: uniquePId,
+                position: pos
+              });
+              selected[n] = pos;
+              alert(selected[n]);
+              n++;
+             }
+      } 
+    }
  
-
+    //=======================================
       //draw direction line between place
       function displayRoute() {
 
