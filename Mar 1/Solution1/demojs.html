@@ -84,11 +84,13 @@
             <td>Index</td>
             <td>Place</td>
             <td>Distance</td>
+            <td>Drive</td>
             <td>Time</td>
         </tr>
         <tr>
             <td id="Pindex">1</td>
             <td><input size=15 type="text" id="latbox"/></td>
+            <td><input size=5 type="text" id="latbox"/></td>
             <td><input size=5 type="text" id="latbox"/></td>
             <td><input size=5 type="text" id="latbox"/></td>
             <td><input type="button" id="delPbutton" value="Remove" onclick="deleteRow(this)"/></td>
@@ -271,10 +273,8 @@
                     directionsService.route(_request, function (_response, _status) {
                         if (_status == google.maps.DirectionsStatus.OK) {
                             var point = _response.routes[ 0 ].legs[ 0 ];
-                            alert("here");
                             inp2.value = point.distance.text;
                             inp3.value = point.duration.text;
-                            alert(inp3.value);
                         }
                     });
 
@@ -364,27 +364,34 @@
           }
 
 
+          if(index != places.length)
+          {
+
+            var x=document.getElementById('PTable');
+            var inp2 = x.rows[index+1].cells[2].getElementsByTagName('input')[0];
+            var inp3 = x.rows[index+1].cells[3].getElementsByTagName('input')[0];
                     _request = {
-                    origin: places[places.length-1].position,
-                    destination: places[places.length-2].position,
+                    origin: mapPoints[index-2].position,
+                    destination: mapPoints[index-1].position,
                     travelMode: google.maps.DirectionsTravelMode.DRIVING
                         };
                     directionsService.route(_request, function (_response, _status) {
                         if (_status == google.maps.DirectionsStatus.OK) {
                             var point = _response.routes[ 0 ].legs[ 0 ];
-                            alert("here");
+
                             inp2.value = point.distance.text;
                             inp3.value = point.duration.text;
-                            alert(inp3.value);
+
                         }
                     });
 
-            
+          }
+
             document.getElementById('PTable').deleteRow(index);
             places.splice(index-1,1);
             
             var t = document.getElementById('PTable');
-            //alert("length: " + places.length);
+
             for (var i = 1; i < t.rows.length; i++) 
             {
                 t.getElementsByTagName("tr")[i].getElementsByTagName("td")[0].innerHTML = i;
