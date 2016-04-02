@@ -74,13 +74,15 @@
         
     </style>
   </head>
-  <body>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js"></script>
+  <body onmousedown="mouseDown()">
       
     <input id="pac-input" class="controls" type="text" placeholder="Search Box">
     
     <div id="mode-selector" class="controls">
         
       <input type="button" name="type" id="hide" value="Clear" onclick="clearMarkers()">
+      <input type="button" name="type" id="hide" value="Statistics" onclick="alert(count)">
 
     </div>
 
@@ -575,9 +577,28 @@
           
       }
 
+    //============================================
+    //count input by keybord
+      var countkey = 0;
+      $(document).ready(function(){
+        $("input").keypress(function(){
+            $("span").text(countkey += 1);
+        });
+      });
+
+    //============================================
+    //count user click numbers
+      var count=0;
+      function mouseDown() {
+        count++;
+      }
+    //=============================================
+
     </script>
       
     <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyC_aOE6jvjAp5oWwNPT5Fgn6kukWFRphvQ&signed_in=true&libraries=places&callback=initMap"
     async defer></script>
+
+    <p>Keypresses: <span>0</span></p>
   </body>
 </html>
