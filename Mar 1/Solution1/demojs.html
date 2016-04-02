@@ -77,7 +77,13 @@
   <body>
       
     <input id="pac-input" class="controls" type="text" placeholder="Search Box">
-      
+    
+    <div id="mode-selector" class="controls">
+        
+      <input type="button" name="type" id="hide" value="Clear" onclick="clearMarkers()">
+
+    </div>
+
     <div id="Ptablediv">
     <table id="PTable" border="1">
         <tr>
@@ -92,7 +98,7 @@
             <td><input size=15 type="text" id="latbox"/></td>
             <td><input size=5 type="text" id="latbox"/></td>
             <td><input size=5 type="text" id="latbox"/></td>
-            <td><input size=5 type="text" id="latbox"/></td>
+            <td><input size=6 type="text" id="latbox"/></td>
             <td><input type="button" id="delPbutton" value="Remove" onclick="deleteRow(this)"/></td>
         </tr>
     </table>
@@ -108,6 +114,7 @@
       var places = [];
       var map;
       var mapPoints = new Array();
+      var nearbyresults = [];
 
       var directionsService;
       var _directionsRenderer = '';
@@ -191,7 +198,6 @@
                     content: content
                 });
                 infoWindow.open(map, marker);
-               
             });
 
             markers.push(marker);
@@ -263,7 +269,75 @@
 
                     var inp3 = new_row.cells[3].getElementsByTagName('input')[0];
 
+                    var inp4 = new_row.cells[3].getElementsByTagName('input')[0];
+                    inp4.value = '';
 
+                    _request = {
+                    origin: places[places.length-1].position,
+                    destination: places[places.length-2].position,
+                    travelMode: google.maps.DirectionsTravelMode.DRIVING
+                        };
+                    directionsService.route(_request, function (_response, _status) {
+                        if (_status == google.maps.DirectionsStatus.OK) {
+                            var point = _response.routes[ 0 ].legs[ 0 ];
+                            inp2.value = point.distance.text;
+                            inp3.value = point.duration.text;
+                        }
+                    });
+
+                    x.appendChild( new_row );
+                }
+        }
+
+        function insRow_nearby(id)
+        {
+
+          var marker
+
+            for (var i = 0; i < nearbyresults.length; i++) 
+            {
+                if (nearbyresults[i].id == id) 
+                {               
+                    marker = nearbyresults[i]
+                }
+            }
+
+
+          mapPoints.push(marker);
+
+          getRoutePointsAndWaypoints();
+
+          
+            places.push(marker);
+            var x=document.getElementById('PTable');
+            
+            if(places.length == 1)
+                {
+                    var inp1 = x.rows[1].cells[1].getElementsByTagName('input')[0];
+                    inp1.value = marker.title;
+
+                    var inp2 = x.rows[1].cells[2].getElementsByTagName('input')[0];
+                    inp2.value = 0;
+
+                    var inp3 = x.rows[1].cells[3].getElementsByTagName('input')[0];
+                    inp3.value = 0;
+                }
+            else
+                {
+                    
+                    var new_row = x.rows[1].cloneNode(true);
+                    var len = places.length;
+                    new_row.cells[0].innerHTML = len;
+
+                    var inp1 = new_row.cells[1].getElementsByTagName('input')[0];
+                    inp1.value = marker.title;
+
+                    var inp2 = new_row.cells[2].getElementsByTagName('input')[0];
+
+                    var inp3 = new_row.cells[3].getElementsByTagName('input')[0];
+
+                    var inp4 = new_row.cells[3].getElementsByTagName('input')[0];
+                    inp4.value = '';
 
                     _request = {
                     origin: places[places.length-1].position,
@@ -447,16 +521,23 @@
 
       function callback(results, status) {
         if (status === google.maps.places.PlacesServiceStatus.OK) {
+
+          nearbyresults.forEach(function(marker) {
+              marker.setMap(null);
+            });
+          nearbyresults.Clear;
+
           for (var i = 0; i < results.length; i++) {
-            createMarker(results[i]);
+            createMarker(results[i],i);
           }
         }
       }
 
-      function createMarker(place) {
+      function createMarker(place,unityId) {
         var placeLoc = place.geometry.location;
         var marker = new google.maps.Marker({
           map: map,
+          id: unityId,
           position: place.geometry.location,
           icon: {
             path: google.maps.SymbolPath.CIRCLE,
@@ -467,12 +548,31 @@
         google.maps.event.addListener(marker, 'click', function() {
 
                 var marker = this;
-                var content = "place";
+                var content = marker.title;
+                content += "<br /><input type = 'button' value = 'Add place' onclick = 'insRow_nearby(" + marker.id + ");' />";
                 var infoWindow = new google.maps.InfoWindow({
                     content: content
                 });
                 infoWindow.open(map, marker);
         });
+        nearbyresults.push(marker);
+      }
+
+      function clearMarkers()
+      {
+          markers.forEach(function(marker) {
+            marker.setMap(null);
+          });
+          
+          places.forEach(function(marker) {
+            marker.setMap(null);
+          });
+
+
+          nearbyresults.forEach(function(marker) {
+            marker.setMap(null);
+          });
+          
       }
 
     </script>
