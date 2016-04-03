@@ -1,6 +1,6 @@
-Senario:
+Scenario:
 Your friend Cara is flying from California to New York and has a layover at Raleigh for 8 hours.
-Her flight lands at 12pm and her flight to NY is at 9pm.
+Her flight lands at 12pm and her flight to NY is at 8pm.
 She wants to visit a couple of places near Raleigh.
 She will have lunch and an early dinner with you.
 You assume that you have taken the day off and you will be assisting her in the trip all the time.
@@ -11,7 +11,7 @@ RDU airport ----> Chinese restaurant -----> Museum of Natural Sciences ----> Ind
 ( 12:00pm )       ( 1 hour meal )         ( maximize your time here )          (1 hour meal)      (arrive before 19:30)
 
 
-Suppose that it would cost 1 hour for one meal, no matter lunch or dinner. And cara loves museum very much, so you should try your best to let her be there as long as possible.
+Suppose that it would cost 1 hour for one meal, no matter lunch or dinner. And cara loves museum very much, the museum will close at 17:30, so you should try your best to let her be there as long as possible.
 
 1. Cara loves Chinese restaurants, please choose one from the following 3 and tell the test instructor about your decision.
 (A) C&T work
@@ -20,6 +20,7 @@ Suppose that it would cost 1 hour for one meal, no matter lunch or dinner. And c
 
 2. Cara and you sepent one hour in the restaurant, then you decide to take Cara to visit the museum in Raleigh. Please find the route from the restaurant to the Histroy Museum, try to make the time in museum as much as possible.
 Destination: Museum of Natural Sciences
+Close time: 17:30
 
 3. Cara enjoyed her time in the museum and had great time there. It is time for dinner now, here are 3 great India restaurants. Please choose one from them and state your reason.
 (A) Blue Mango
@@ -29,7 +30,7 @@ Destination: Museum of Natural Sciences
 4. Cara and you talked a lot during your dinner, but it is time to say goodbye. After one-hour meal, you have to send her to the airport. Please find the route from the restaurant to the airport.
 Destination: RDU airport
 
-5. Please clear the map, and create a complete itinerary on the map.
+5. Please create a complete itinerary on the map.
 
 
 

@@ -25,22 +25,19 @@
   <body onmousedown="mouseDown()">
     <div>
     <form id="form1" >
+    <input type="button" id="button5" onclick="alert(count)" 
+    value="Click times" style="width:100%"/></br>
     <input type="button" id="button2" onclick="clearall()" 
     value="Clear Everything" style="width:100%"/></br>
     <input type="text" id="text1" size="42" placeholder="Search Places"/></br>
     <input type="button" id="button1" value="Search" style="width:100%"/></br>
-    <input type="textfield" id="select1" size="18" placeholder="Select a place"/>
+    <input type="text" id="select1" size="18" placeholder="Select a place"/>
     <input type="button" id="button6" onclick="addselectplace()" 
     value="Select" style="width:150px"/></br>
     <input type="text" id="textnp" size="18" placeholder="Nearby Place"/>
     <input type="text" id="textns" size="18" placeholder="Nearby"/></br>
     <input type="button" id="button4" onclick="nearbySearch()" 
     value="Nearby Search" style="width:100%"/></br>
-    <input type="button" id="button5" onclick="alert(count)" 
-    value="Click times" style="width:100%"/></br>
-    <input type="textfield" id="select1" size="18" placeholder="Select a place"/>
-    <input type="button" id="button6" onclick="addselectplace()" 
-    value="Select" style="width:150px"/></br>
     <input type="button" id="button7" onclick="showplace()" 
     value="show all place" style="width:100%"/></br>
     <input type="textfield" id="place1" size="18" placeholder="Start"/>
@@ -334,15 +331,41 @@
 
     // clear everything in the web. init it
       function clearall(){
-        initMap();
+  
         document.getElementById('text1').value = "";
+        document.getElementById('textnp').value = "";
+        document.getElementById('textns').value = "";
+        document.getElementById('select1').value = "";
         document.getElementById('place1').value = "";
         document.getElementById('place2').value = "";
+        document.getElementById('Ptablediv').innerHTML="TABLE DELETED";
+
+        var map;      
+        var service;
+        var count=0;
+        var countkey = 0;
+        $("span").text(countkey = 0);
         var i=1;
+        //input serach place array
         var address=[];
+        //store searched place Lonlat
         var lonlat=[];
+        //nearby markers
+        var markers=[];
+        //markers lable for search
         var labels = '123456789';
+        //markers lable index
         var labelIndex = 0;
+        var flag=0;
+        var selected=[];
+        //this array store final place name 
+        var finalname=[];
+        //creat new marker for nearby select
+        var marker1;
+        var nearbyname=[];
+        var searchname=[];
+        var n=1;
+        initMap();
       }
       </script>
 
