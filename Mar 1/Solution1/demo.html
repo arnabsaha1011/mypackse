@@ -24,6 +24,10 @@
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js"></script>
   <body onmousedown="mouseDown()">
     <div>
+    <datalist id="exampleList">
+    <option value="parking">
+    <option value="restaurant">
+    </datalist>
     <form id="form1" >
     <input type="button" id="button5" onclick="alert(count)" 
     value="Click times" style="width:100%"/></br>
@@ -35,11 +39,9 @@
     <input type="button" id="button6" onclick="addselectplace()" 
     value="Select" style="width:150px"/></br>
     <input type="text" id="textnp" size="18" placeholder="Nearby Place"/>
-    <input type="text" id="textns" size="18" placeholder="Nearby"/></br>
+    <input type="text" id="textns" size="18" placeholder="Nearby" list="exampleList"/></br>
     <input type="button" id="button4" onclick="nearbySearch()" 
     value="Nearby Search" style="width:100%"/></br>
-    <input type="button" id="button7" onclick="showplace()" 
-    value="show all place" style="width:100%"/></br>
     <input type="textfield" id="place1" size="18" placeholder="Start"/>
     <input type="textfield" id="place2" size="18" placeholder="End"/></br>
     <input type="button" id="button3" onclick="displayRoute()" 
@@ -80,6 +82,9 @@
       //
       var nearbyname=[];
       var searchname=[];
+      //var directionsDisplay='';
+      var directionsService;
+      var _request;
       //var directionsService;
       var n=1;
       /*
@@ -102,6 +107,8 @@
       document.getElementById('button1').addEventListener('click', function() {
           geocodeAddress(geocoder, map);
         });
+      //directionsDisplay = new google.maps.DirectionsRenderer({map: map});
+      directionsService = new google.maps.DirectionsService(); 
       
   }
     //**************************************
@@ -152,7 +159,7 @@
         var nearbys = document.getElementById('textns').value;
         var request = {
           location: lonlat[k],
-          radius: '50',
+          radius: '80',
           query: nearbys
           //query: 'restaurant'
         };
@@ -201,10 +208,61 @@
         var temp = document.getElementById('select1').value;
         selected.push(lonlat[temp]);
         finalname.push(searchname[temp]);
+        insRow();
         //name.push(address[temp]);
         //alert(address[temp]);
       }
     
+    //add new row
+            function insRow()
+        {
+
+            var x=document.getElementById('PTable');
+            
+            if(finalname.length == 1)
+                {
+                    var inp1 = x.rows[1].cells[1].getElementsByTagName('input')[0];
+                    inp1.value = finalname[0];
+                    var inp2 = x.rows[1].cells[2].getElementsByTagName('input')[0];
+                    inp2.value = 0;
+                    var inp3 = x.rows[1].cells[3].getElementsByTagName('input')[0];
+                    inp3.value = 0;
+                }
+            else
+                {
+                    
+                    var new_row = x.rows[1].cloneNode(true);
+                    var len = finalname.length;
+                    new_row.cells[0].innerHTML = len;
+                    var inp1 = new_row.cells[1].getElementsByTagName('input')[0];
+                    inp1.value = finalname[len-1];
+                    var inp2 = new_row.cells[2].getElementsByTagName('input')[0];
+                    var inp3 = new_row.cells[3].getElementsByTagName('input')[0];
+                    //var inp4 = new_row.cells[3].getElementsByTagName('input')[0];
+                    //inp4.value = '';
+                    var directionsDisplay = new google.maps.DirectionsRenderer({map: map});
+                    _request = {
+                    origin: selected[len-2],
+                    destination: selected[len-1],
+                    travelMode: google.maps.DirectionsTravelMode.DRIVING
+                        };
+                    directionsService.route(_request, function (_response, _status) {
+                        if (_status == google.maps.DirectionsStatus.OK) {
+                            var point = _response.routes[ 0 ].legs[ 0 ];
+                            inp2.value = point.distance.text;
+                            inp3.value = point.duration.text;
+                            directionsDisplay.setDirections(_response);
+                        }
+                    });
+                    x.appendChild( new_row );
+                }
+        }
+
+
+
+
+
+
     //==========================================================
     //list all the selected place include nearby search selected(in order) on the web
       function showplace(){
@@ -213,7 +271,7 @@
 
         //var new_row;
         //var len;
-
+        var arrayn=[];
         var x=document.getElementById('PTable');
         for (var q = 1; q < selected.length+1; q++) {
            //alert(selected[q]);
@@ -226,14 +284,14 @@
             inp03.value = 0;
             //alert('hi');
             flag++;
-            alert('hello');
+            //alert('hello');
            }
            else{
-            alert('haha');   
+            //alert('haha');   
             //alert(inp1.value);
             var new_row = x.rows[1].cloneNode(true);
-            var len = selected.length;
-            new_row.cells[0].innerHTML = len;
+            //var len = selected.length;
+            new_row.cells[0].innerHTML = q;
 
             var inp1 = new_row.cells[1].getElementsByTagName('input')[0];
             inp1.value = finalname[q-1];                    
@@ -253,6 +311,7 @@
                 inp2.value = point.distance.text;
                 inp3.value = point.duration.text;
                 directionsDisplay.setDirections(response);
+                if (point.distance.text==finalname[q-2]) {alert(q)};
               }
             });
                     
@@ -280,6 +339,7 @@
             //selected[n] = pos;
             selected.push(pos);
             finalname.push(nametemp);
+            insRow();
             //alert(nametemp);
             //alert(pos.name);
             //alert(selected[n]);
