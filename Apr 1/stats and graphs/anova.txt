@@ -1,0 +1,81 @@
+> analysis<-lm(X.Clicks~as.factor(Solution.number))
+> anova(analysis)
+Analysis of Variance Table
+
+Response: X.Clicks
+                           Df  Sum Sq Mean Sq F value
+as.factor(Solution.number)  2  9557.2  4778.6  12.552
+Residuals                  57 21699.5   380.7        
+                             Pr(>F)    
+as.factor(Solution.number) 3.04e-05 ***
+Residuals                              
+---
+Signif. codes:  
+0 ‘***’ 0.001 ‘**’ 0.01 ‘*’ 0.05 ‘.’ 0.1 ‘ ’ 1
+> TukeyHSD(aov(analysis))
+  Tukey multiple comparisons of means
+    95% family-wise confidence level
+
+Fit: aov(formula = analysis)
+
+$`as.factor(Solution.number)`
+      diff        lwr        upr     p adj
+2-1  10.60  -4.247678  25.447678 0.2073358
+3-1 -19.85 -34.697678  -5.002322 0.0059638
+3-2 -30.45 -45.297678 -15.602322 0.0000216
+
+---------------------------------------------------------
+
+> analysis<-lm(X.Characters~as.factor(Solution.number))
+> anova(analysis)
+Analysis of Variance Table
+
+Response: X.Characters
+                           Df Sum Sq Mean Sq F value
+as.factor(Solution.number)  2 293441  146721  233.95
+Residuals                  57  35747     627        
+                              Pr(>F)    
+as.factor(Solution.number) < 2.2e-16 ***
+Residuals                               
+---
+Signif. codes:  
+0 ‘***’ 0.001 ‘**’ 0.01 ‘*’ 0.05 ‘.’ 0.1 ‘ ’ 1
+> TukeyHSD(aov(analysis))
+  Tukey multiple comparisons of means
+    95% family-wise confidence level
+
+Fit: aov(formula = analysis)
+
+$`as.factor(Solution.number)`
+      diff       lwr       upr     p adj
+2-1   4.50 -14.55699  23.55699 0.8374926
+3-1 150.55 131.49301 169.60699 0.0000000
+3-2 146.05 126.99301 165.10699 0.0000000
+
+--------------------------------------------
+
+> analysis<-lm(Total.Time..mins.~as.factor(Solution.number))
+> anova(analysis)
+Analysis of Variance Table
+
+Response: Total.Time..mins.
+                           Df  Sum Sq Mean Sq F value
+as.factor(Solution.number)  2 178.852  89.426  57.852
+Residuals                  57  88.109   1.546        
+                              Pr(>F)    
+as.factor(Solution.number) 1.902e-14 ***
+Residuals                               
+---
+Signif. codes:  
+0 ‘***’ 0.001 ‘**’ 0.01 ‘*’ 0.05 ‘.’ 0.1 ‘ ’ 1
+> TukeyHSD(aov(analysis))
+  Tukey multiple comparisons of means
+    95% family-wise confidence level
+
+Fit: aov(formula = analysis)
+
+$`as.factor(Solution.number)`
+     diff       lwr      upr     p adj
+2-1 1.242 0.2958876 2.188112 0.0070439
+3-1 4.122 3.1758876 5.068112 0.0000000
+3-2 2.880 1.9338876 3.826112 0.0000000
