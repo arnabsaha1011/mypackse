@@ -9,14 +9,14 @@
 
 ## Overview
 
-In Feb project, we tried to identify the potential usability problems of Google applications . To do that a multi-step task was given to 20 users. On completion of the task, the users were asked to fill a survey with five questions. In all, several usability problems were identified and three solutions were suggested. In Mar project, we have implemented the three solutions which solves different subsets of the problems. In addition, we will be asking the users to do the same task using our new applications and try to find out if the users are finding our solutions useful.
+To identify the potential usability problems of Google applications, a multi-step task was given to 20 users. On completion of the task, the users were asked to fill a survey with five questions. In all, several usability problems were identified and we suggested some solutions for the problems. In the next two months, two web applications and an android application was developed. Further we conducted user tests on the three solutions and conducted a post survey to collect the user experience. Finally we ran statistical analysis on the data.
 
 ## Useful Links
 
 * [Issues](https://github.com/arnabsaha1011/mypackse/issues)
 * [Milestones](https://github.com/arnabsaha1011/mypackse/milestones)
 * [Contributors](https://github.com/arnabsaha1011/mypackse/graphs/contributors)
-* [Telemetry](https://github.com/arnabsaha1011/mypackse/tree/master/Telemetry)
+* [Telemetry](https://github.com/arnabsaha1011/mypackse/tree/master/Apr%201/Telemetry)
 * [Repository](https://github.com/arnabsaha1011/mypackse)
 
 ## Solutions
