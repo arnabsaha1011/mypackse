@@ -16,7 +16,7 @@ In Feb project, we tried to identify the potential usability problems of Google 
 * [Issues](https://github.com/arnabsaha1011/mypackse/issues)
 * [Milestones](https://github.com/arnabsaha1011/mypackse/milestones)
 * [Contributors](https://github.com/arnabsaha1011/mypackse/graphs/contributors)
-* [Telemetry](https://github.com/arnabsaha1011/mypackse/tree/master/Telemetry)
+* [Telemetry](https://github.com/arnabsaha1011/mypackse/tree/master/Mar%201/Telemetry)
 * [Repository](https://github.com/arnabsaha1011/mypackse)
 
 ## Solutions
