@@ -2,7 +2,7 @@
 
 ## Google Maps JavaScript API
 Our first two solutions are developed based on Google Maps JavaScript API.
-![ScreenShot](https://github.com/arnabsaha1011/mypackse/blob/master/Mar%201/base/screenshot.png)
+![ScreenShot](https://github.com/arnabsaha1011/mypackse/blob/master/Mar%201/Base/screenshot.png)
 
 ### Source
 [Goolge Maps on Web](https://developers.google.com/maps/documentation/javascript/)
