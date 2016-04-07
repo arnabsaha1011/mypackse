@@ -1,10 +1,12 @@
 # Solution 1
+This solution developed by HTML, JavaScript, CSS and based on Google Maps JavaScript API. This is a new web application in order to make users manage their tourist routine and manage their time as a itinerary application.
 
-This is an web version of the google maps. We have implemented this application using HTML, JS and CSS.
 
 ## Features:
 
 * Search multiple places
-* Save paths: 
-* Mark a searched place
-* Choose 2 certain place user have searched for direction
+* Search nearby around selected place
+* Proviide Recommend place for nearby search: parking and restaurant
+* Calculate drive time for timeline
+
+##Quick Demo
