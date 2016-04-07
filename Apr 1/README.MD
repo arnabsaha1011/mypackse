@@ -8,22 +8,22 @@
 * Yiqiao Xu (yxu35@ncsu.edu)
 
 ## Overview
-
-To identify the potential usability problems of Google applications, a multi-step task was given to 20 users. On completion of the task, the users were asked to fill a survey with five questions. In all, several usability problems were identified and we suggested some solutions for the problems. In the next two months, two web applications and an android application was developed. Further we conducted user tests on the three solutions and conducted a post survey to collect the user experience. Finally we ran statistical analysis on the data.
+After the work in Feburary to generate 3 different solutions to the usability problems that we have found in January, we have conducted several experiment to test the effectiveness of those solutions in March. Here is the respository of all work that we have done for April 1 project, including user tests, experiment result, analysis, presentation file and final report.
 
 ## Useful Links
 
 * [Issues](https://github.com/arnabsaha1011/mypackse/issues)
 * [Milestones](https://github.com/arnabsaha1011/mypackse/milestones)
 * [Contributors](https://github.com/arnabsaha1011/mypackse/graphs/contributors)
-* [Telemetry](https://github.com/arnabsaha1011/mypackse/tree/master/Apr%201/Telemetry)
-* [Repository](https://github.com/arnabsaha1011/mypackse)
+* [3 Solutions and base](https://github.com/arnabsaha1011/mypackse/tree/master/Mar%201)
+* [Presentation](https://github.com/arnabsaha1011/mypackse/tree/master/Apr%201/April%2021st%20Presentation)
+* [Final Report]
 
 ## Solutions
 
 * [Solution 1](https://github.com/arnabsaha1011/mypackse/tree/master/Mar%201/Solution1)
-* [Solution 2](https://github.com/arnabsaha1011/mypackse/tree/master/Solution-Ye/Demomaps)
-* [Solution 3](https://github.com/arnabsaha1011/mypackse/tree/master/Mar%201/Solution3/Itinerary)
+* [Solution 2](https://github.com/arnabsaha1011/mypackse/tree/master/Mar%201/Solution2)
+* [Solution 3](https://github.com/arnabsaha1011/mypackse/tree/master/Mar%201/Solution3)
 
 ## Evaluation Plan
 
