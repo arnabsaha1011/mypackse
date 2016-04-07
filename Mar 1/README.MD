@@ -22,7 +22,7 @@ In Feb project, we tried to identify the potential usability problems of Google 
 ## Solutions
 
 * [Solution 1](https://github.com/arnabsaha1011/mypackse/tree/master/Solution1)
-* [Solution 2](https://github.com/arnabsaha1011/mypackse/tree/master/Solution-Ye/Demomaps)
+* [Solution 2](https://github.com/arnabsaha1011/mypackse/tree/master/Solution 2)
 * [Solution 3](https://github.com/arnabsaha1011/mypackse/tree/master/Solution3/Itinerary)
 
 ## Evaluation Plan
