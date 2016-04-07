@@ -16,4 +16,4 @@ Create an itinerary with the help of this app.
 
 
 # Quick Demo
-[![ScreenShot](https://github.com/arnabsaha1011/mypackse/blob/master/Solution3/Itinerary/screenshots/version%201.0.png)](https://www.youtube.com/watch?v=Xr5GIIHF4_o)
+[![ScreenShot](https://github.com/arnabsaha1011/mypackse/blob/master/Mar%201/Solution3/Itinerary/screenshots/version%201.0.png)](https://www.youtube.com/watch?v=Xr5GIIHF4_o)
