@@ -24,13 +24,17 @@ We suggested some solutions for the problems and closed
 the paper with a discussion of what we plan to do in the
 upcoming months.
 
-For more details click on the [link](https://github.com/arnabsaha1011/mypackse/blob/master/New%20Folder/Survey/Feb%201%20report.pdf)
+For more details click on the [link](https://github.com/arnabsaha1011/mypackse/blob/master/Feb%201/Feb%201%20report.pdf)
 
 ## March deliverable:
 
-* Solution 1: Find paths between two locations and save previous searches.
-* Solution 2: Find paths between two or more locations. Manage timeline of each location/path. Itinerary android application. Click on the [link](https://github.com/asaha1/Itinerary) for details
-* Solution 3: Full itinerary application
+* Solution 1: Web-based application. Click on the [link](https://github.com/arnabsaha1011/mypackse/tree/master/Mar%201/Solution1) for details
+* Solution 2: Web-based application. Click on the [link](https://github.com/arnabsaha1011/mypackse/tree/master/Mar%201/Solution2) for details
+* Solution 3: Android-based application. Click on the [link](https://github.com/arnabsaha1011/mypackse/tree/master/Mar%201/Solution3) for details
 
+## April deliverable:
 
-For more details click on the [link](https://docs.google.com/presentation/d/1iMTTqjkAjfIR9KV12kleRVFUgW58u_fqsxpd1sPCLtM/edit#slide=id.p3)
+#### Abstract:
+To identify the potential usability problems of Google applications, a multi-step task was given to 20 users. On completion of the task, the users were asked to fill a survey with five questions. In all, several usability problems were identified and we suggested some solutions for the problems. In the next two months, two web applications and an android application was developed using the user suggestions. Further we conducted user tests with 60 participants on the three applications and conducted a post survey to collect the user experience. Finally we ran statistical analysis and used Multi-criteria decision making methods on the data to show that one of the solutions was empirically better than the other two.
+
+For more details click on the [link](https://github.com/arnabsaha1011/mypackse/blob/master/Feb%201/Feb%201%20report.pdf)
