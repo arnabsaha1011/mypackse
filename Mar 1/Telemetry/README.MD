@@ -5,16 +5,16 @@ In the next part of our evaluation, we will be present our three solutions to th
 ## Past results from the survey
 
 ### Google apps vs. Users
-![alt tag](https://github.com/arnabsaha1011/mypackse/blob/master/Telemetry/Charts/googleAppsVsUsers.png)
+![alt tag](https://github.com/arnabsaha1011/mypackse/blob/master/Mar%201/Telemetry/Charts/googleAppsVsUsers.png)
 </br>
 ### Devices vs. Users
-![alt tag](https://github.com/arnabsaha1011/mypackse/blob/master/Telemetry/Charts/deviceVsUsers.png)
+![alt tag](https://github.com/arnabsaha1011/mypackse/blob/master/Mar%201/Telemetry/Charts/deviceVsUsers.png)
 </br>
 ### Problems vs Users*
-![alt tag](https://github.com/arnabsaha1011/mypackse/blob/master/Telemetry/Charts/problemVsUsers.png)
+![alt tag](https://github.com/arnabsaha1011/mypackse/blob/master/Mar%201/Telemetry/Charts/problemVsUsers.png)
 </br>
 ### Order vs Users*
-![alt tag](https://github.com/arnabsaha1011/mypackse/blob/master/Telemetry/Charts/OrderVsUsers.png)
+![alt tag](https://github.com/arnabsaha1011/mypackse/blob/master/Mar%201/Telemetry/Charts/OrderVsUsers.png)
 </br>
 
 ### *The problems are listed below:
