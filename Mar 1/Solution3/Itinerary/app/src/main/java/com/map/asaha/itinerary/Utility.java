@@ -16,6 +16,12 @@ import java.util.List;
  */
 public class Utility {
 
+    /**
+     * @param location1
+     * @param location2
+     * @param placesList
+     * @return places list separated by ,
+     */
     public static String generateSearchString(String location1, String location2, ArrayList<EditText> placesList) {
         StringBuilder placesString = new StringBuilder();
         placesString.append(location1).append(",").append(location2);
@@ -25,6 +31,13 @@ public class Utility {
         return placesString.toString();
     }
 
+    /**
+     * @param lat1
+     * @param lat2
+     * @param lon1
+     * @param lon2
+     * @return Generate fake duration time
+     */
     public static double calcTime(double lat1, double lat2, double lon1, double lon2) {
 
         final int R = 6371; // Radius of the earth
@@ -35,9 +48,9 @@ public class Utility {
                 + Math.cos(Math.toRadians(lat1)) * Math.cos(Math.toRadians(lat2))
                 * Math.sin(lonDistance / 2) * Math.sin(lonDistance / 2);
         Double c = 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1 - a));
-        double distance = R * c * 1000; // convert to meters
-
-        return distance * 2;
+        double distance = R * c * 100; // convert to meters
+        System.out.println("Time = " + distance);
+        return distance;
     }
 
     public static List<String> getPlacesListFromString(String places) {
@@ -54,23 +67,28 @@ public class Utility {
         return h + ":" + m;
     }
 
-    public static String generateTimeList(ArrayList<Button> buttonsList) {
+    /**
+     * @param firstButton
+     * @param editTextArrayList
+     * @return time string separated by ,
+     */
+    public static String generateTimeList(Button firstButton, ArrayList<EditText> editTextArrayList) {
         StringBuilder timeString = new StringBuilder();
-        for (Button button : buttonsList) {
-            timeString.append(button.getText()).append(",");
+        timeString.append(firstButton.getText()).append(",");
+        for (EditText editText : editTextArrayList) {
+            timeString.append(editText.getText()).append(",");
         }
         timeString.deleteCharAt(timeString.length() - 1);
         return timeString.toString();
     }
 
     /**
-     *
      * @param startTime
      * @param drivingTime
      * @param stayTime
      * @return Reach at hh:mm Start at hh:mm
      */
-    public static String getTimeFormattedString(String startTime, double drivingTime, String stayTime) {
+    public static String getTimeFormattedString(String startTime, double drivingTime, String stayTime, boolean isLast) {
         String[] previousStartTimeStrings = getSplittedTime(startTime);
         Calendar calendar = Calendar.getInstance();
         calendar.setTime(new Date());
@@ -78,21 +96,20 @@ public class Utility {
         calendar.set(Calendar.MINUTE, Integer.parseInt(previousStartTimeStrings[0]));
 
         //add driving time to get reach time
-        calendar.add(Calendar.MINUTE, ((int) drivingTime));
+        calendar.add(Calendar.SECOND, ((int) drivingTime));
 
         StringBuilder returnString = new StringBuilder();
         returnString.append("Reach at ").append(getFormattedTime(calendar));
 
         //calculate start time from the place
-        String[] stayTimeStrings = getSplittedTime(stayTime);
-        calendar.add(Calendar.HOUR_OF_DAY, Integer.parseInt(stayTimeStrings[0]));
-        calendar.add(Calendar.MINUTE, Integer.parseInt(stayTimeStrings[1]));
-        returnString.append(" ").append("Start at ").append(getFormattedTime(calendar));
+        if (!isLast) {
+            calendar.add(Calendar.MINUTE, Integer.parseInt(stayTime));
+            returnString.append(" ").append("Start at ").append(getFormattedTime(calendar));
+        }
         return returnString.toString();
     }
 
     /**
-     *
      * @param calendar
      * @return hours:minutes
      */

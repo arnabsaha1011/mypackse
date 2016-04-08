@@ -61,12 +61,14 @@
     <LinearLayout
         android:layout_width="fill_parent"
         android:layout_height="wrap_content">
-        <Button
+        <EditText
             android:id="@+id/interval1"
             android:layout_marginLeft="5dp"
-            android:layout_width="50dp"
             android:layout_height="wrap_content"
+            android:layout_width="50dp"
             android:text="@string/pick_time"
+            android:inputType="number"
+            android:gravity="center"
             android:background="@color/common_plus_signin_btn_text_dark_focused" />
 
         <EditText

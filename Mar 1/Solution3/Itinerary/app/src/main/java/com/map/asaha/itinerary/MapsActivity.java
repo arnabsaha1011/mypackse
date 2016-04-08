@@ -29,11 +29,13 @@ public class MapsActivity extends FragmentActivity {
     private List<String> placesList = null;
     private List<String> timesList = null;
     String places, times, clear_map = "false";
+    public static int count = 0;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_maps);
+
 
         if (googleMap == null) {
             googleMap = ((MapFragment) getFragmentManager().findFragmentById(R.id.map2)).getMap();
@@ -95,7 +97,8 @@ public class MapsActivity extends FragmentActivity {
             builder.include(marker.getPosition());
 
             double duration = mapUtility.drawPath(this, googleMap, place0, place1);
-            String durationString = Utility.getTimeFormattedString(startTime, duration, timesList.get(1));
+            System.out.println("Duration = " + duration);
+            String durationString = Utility.getTimeFormattedString(startTime, duration, timesList.get(1), placesList.size() <= 2);
 
             marker = mapUtility.drawMarker(googleMap, place1, durationString);
             builder.include(marker.getPosition());
@@ -104,7 +107,8 @@ public class MapsActivity extends FragmentActivity {
                 place0 = place1;
                 place1 = MapUtility.getLatLngFromLocationName(this, placesList.get(i));
                 duration = mapUtility.drawPath(this, googleMap, place0, place1);
-                durationString = Utility.getTimeFormattedString(timesList.get(i - 1), duration, timesList.get(i));
+                System.out.println("Duration = " + duration);
+                durationString = Utility.getTimeFormattedString(timesList.get(i - 1), duration, timesList.get(i), (placesList.size() - 1) == i);
                 marker = mapUtility.drawMarker(googleMap, place1, durationString);
                 builder.include(marker.getPosition());
             }
