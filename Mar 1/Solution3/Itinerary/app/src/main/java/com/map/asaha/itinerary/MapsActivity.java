@@ -98,9 +98,9 @@ public class MapsActivity extends FragmentActivity {
 
             double duration = mapUtility.drawPath(this, googleMap, place0, place1);
             System.out.println("Duration = " + duration);
-            String durationString = Utility.getTimeFormattedString(startTime, duration, timesList.get(1), placesList.size() <= 2);
+            TimeFormat timeFormat = Utility.getTimeFormattedString(startTime, duration, timesList.get(1), placesList.size() <= 2);
 
-            marker = mapUtility.drawMarker(googleMap, place1, durationString);
+            marker = mapUtility.drawMarker(googleMap, place1, timeFormat.getReturnString());
             builder.include(marker.getPosition());
 
             for (int i = 2; i < placesList.size(); i++) {
@@ -108,8 +108,8 @@ public class MapsActivity extends FragmentActivity {
                 place1 = MapUtility.getLatLngFromLocationName(this, placesList.get(i));
                 duration = mapUtility.drawPath(this, googleMap, place0, place1);
                 System.out.println("Duration = " + duration);
-                durationString = Utility.getTimeFormattedString(timesList.get(i - 1), duration, timesList.get(i), (placesList.size() - 1) == i);
-                marker = mapUtility.drawMarker(googleMap, place1, durationString);
+                timeFormat = Utility.getTimeFormattedString(timeFormat.getReturnTime(), duration, timesList.get(i), (placesList.size() - 1) == i);
+                marker = mapUtility.drawMarker(googleMap, place1, timeFormat.getReturnString());
                 builder.include(marker.getPosition());
             }
         }

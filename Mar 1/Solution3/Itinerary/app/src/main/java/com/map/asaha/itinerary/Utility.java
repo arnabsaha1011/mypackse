@@ -88,25 +88,29 @@ public class Utility {
      * @param stayTime
      * @return Reach at hh:mm Start at hh:mm
      */
-    public static String getTimeFormattedString(String startTime, double drivingTime, String stayTime, boolean isLast) {
+    public static TimeFormat getTimeFormattedString(String startTime, double drivingTime, String stayTime, boolean isLast) {
         String[] previousStartTimeStrings = getSplittedTime(startTime);
         Calendar calendar = Calendar.getInstance();
         calendar.setTime(new Date());
         calendar.set(Calendar.HOUR_OF_DAY, Integer.parseInt(previousStartTimeStrings[0]));
-        calendar.set(Calendar.MINUTE, Integer.parseInt(previousStartTimeStrings[0]));
+        calendar.set(Calendar.MINUTE, Integer.parseInt(previousStartTimeStrings[1]));
 
         //add driving time to get reach time
         calendar.add(Calendar.SECOND, ((int) drivingTime));
 
         StringBuilder returnString = new StringBuilder();
-        returnString.append("Reach at ").append(getFormattedTime(calendar));
+        TimeFormat timeFormat = new TimeFormat();
+        String formattedTime = getFormattedTime(calendar);
+        timeFormat.setReturnTime(formattedTime);
+        returnString.append("Reach at ").append(formattedTime);
 
         //calculate start time from the place
         if (!isLast) {
             calendar.add(Calendar.MINUTE, Integer.parseInt(stayTime));
             returnString.append(" ").append("Start at ").append(getFormattedTime(calendar));
         }
-        return returnString.toString();
+        timeFormat.setReturnString(returnString.toString());
+        return timeFormat;
     }
 
     /**
