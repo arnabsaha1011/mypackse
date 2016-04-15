@@ -6,10 +6,10 @@ Create an itinerary with the help of this app.
 * Android application
 * Shows real paths between multiple places
 * Fancy GUI
-
-##Currently working on:
 * Creating itinerary of the path
 * Calculate time needed to go from A to B
+
+##Future Works:
 * Closest restaurants/places
 * Places opening and closing time
 * Parking availability
