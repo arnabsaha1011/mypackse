@@ -82,6 +82,7 @@
     <div id="mode-selector" class="controls">
         
       <input type="button" name="type" id="hide" value="Clear" onclick="clearMarkers()">
+      <input type="button" name="type" id="hide" value="Time" onclick="CalcTime()">
       <input type="button" name="type" id="hide" value="Statistics" onclick="alert(count)">
 
     </div>
@@ -93,12 +94,16 @@
             <td>Place</td>
             <td>Distance</td>
             <td>Drive</td>
-            <td>Time</td>
+            <td>Arrive Time</td>
+            <td>Duration</td>
+            <td>Depart Time</td>
         </tr>
         <tr>
             <td id="Pindex">1</td>
             <td><input size=15 type="text" id="latbox"/></td>
             <td><input size=5 type="text" id="latbox"/></td>
+            <td><input size=5 type="text" id="latbox"/></td>
+            <td><input size=6 type="text" id="latbox"/></td>
             <td><input size=5 type="text" id="latbox"/></td>
             <td><input size=6 type="text" id="latbox"/></td>
             <td><input type="button" id="delPbutton" value="Remove" onclick="deleteRow(this)"/></td>
@@ -223,6 +228,7 @@
           
       }
       
+      var drive_duration = 0;
 
       function insRow(id)
         {
@@ -256,11 +262,19 @@
 
                     var inp3 = x.rows[1].cells[3].getElementsByTagName('input')[0];
                     inp3.value = 0;
+
+                    var inp4 = x.rows[1].cells[4].getElementsByTagName('input')[0];
+
+                    var inp5 = x.rows[1].cells[5].getElementsByTagName('input')[0];
+                    inp5.value = '00:00';
+
+                    var inp6 = x.rows[1].cells[6].getElementsByTagName('input')[0];
+                    inp6.value = "08:00";
                 }
             else
                 {
                     
-                    var new_row = x.rows[1].cloneNode(true);
+                    var new_row = x.rows[places.length-1].cloneNode(true);
                     var len = places.length;
                     new_row.cells[0].innerHTML = len;
 
@@ -272,7 +286,9 @@
                     var inp3 = new_row.cells[3].getElementsByTagName('input')[0];
 
                     var inp4 = new_row.cells[4].getElementsByTagName('input')[0];
-                    inp4.value = '';
+
+                    var inp6 = new_row.cells[6].getElementsByTagName('input')[0];
+
 
                     _request = {
                     origin: places[places.length-1].position,
@@ -289,6 +305,67 @@
 
                     x.appendChild( new_row );
                 }
+        }
+
+        function CalcTime()
+        {
+          var n = places.length;
+          var i;
+          
+          alert(n);
+          for(i = 2; i < n+1; i++)
+          {
+                    var depart_time;
+                    var x=document.getElementById('PTable');
+
+                    var departcell = x.rows[i-1].cells[6].getElementsByTagName('input')[0];
+                    depart_time = departcell.value;
+                    
+
+                    var inp3 = x.rows[i].cells[3].getElementsByTagName('input')[0];
+                    var temp = inp3.value;
+                    var index1 = temp.indexOf("m");
+                    var drive_duration = temp.substring(0,index1);
+
+
+                    var inp4 = x.rows[i].cells[4].getElementsByTagName('input')[0];
+                    alert("depart: " + depart_time + ' and ' + "drive_duration: " + drive_duration);
+                    inp4.value = add_drivetime(depart_time, drive_duration);
+                    
+
+                    var inp5 = x.rows[i].cells[5].getElementsByTagName('input')[0];
+
+                    var inp6 = x.rows[i].cells[6].getElementsByTagName('input')[0];
+
+                    alert("in4: " + inp4.value + ' and ' + "in5: " + inp5.value);
+                    inp6.value = add_duration(inp4.value, inp5.value);
+
+          }
+        }
+
+        function add_duration(time1, durationtime)
+        {
+
+          var temps = time1.split(':');
+          var durations = durationtime.split(':');
+          var sum = parseInt(temps[1]) + parseInt(durations[1]);
+          var mins = sum % 60;
+          var hours = Math.floor(sum / 60);
+          temps[0] = parseInt(temps[0]) + parseInt(hours) + parseInt(durations[0]);
+          temps[1] = parseInt(mins);
+          return temps[0] + ':' + temps[1];
+        }
+
+        function add_drivetime(time1, drivetime)
+        {
+
+          var temps = time1.split(':');
+          var sum = parseInt(temps[1]) + parseInt(drivetime);
+          var mins = sum % 60;
+          var hours = Math.floor(sum / 60);
+          temps[0] = parseInt(temps[0]) + parseInt(hours);
+          temps[1] = parseInt(mins);
+          return temps[0] + ':' + temps[1];
         }
 
         function insRow_nearby(id)
