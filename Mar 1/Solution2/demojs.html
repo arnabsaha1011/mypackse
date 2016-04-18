@@ -83,7 +83,6 @@
         
       <input type="button" name="type" id="hide" value="Clear" onclick="clearMarkers()">
       <input type="button" name="type" id="hide" value="Time" onclick="CalcTime()">
-      <input type="button" name="type" id="hide" value="Statistics" onclick="alert(count)">
 
     </div>
 
@@ -312,7 +311,7 @@
           var n = places.length;
           var i;
           
-          alert(n);
+          //alert(n);
           for(i = 2; i < n+1; i++)
           {
                     var depart_time;
@@ -329,7 +328,7 @@
 
 
                     var inp4 = x.rows[i].cells[4].getElementsByTagName('input')[0];
-                    alert("depart: " + depart_time + ' and ' + "drive_duration: " + drive_duration);
+                    //alert("depart: " + depart_time + ' and ' + "drive_duration: " + drive_duration);
                     inp4.value = add_drivetime(depart_time, drive_duration);
                     
 
@@ -337,7 +336,7 @@
 
                     var inp6 = x.rows[i].cells[6].getElementsByTagName('input')[0];
 
-                    alert("in4: " + inp4.value + ' and ' + "in5: " + inp5.value);
+                    //alert("in4: " + inp4.value + ' and ' + "in5: " + inp5.value);
                     inp6.value = add_duration(inp4.value, inp5.value);
 
           }
@@ -657,19 +656,19 @@
 
     //============================================
     //count input by keybord
-      var countkey = 0;
-      $(document).ready(function(){
-        $("input").keypress(function(){
-            $("span").text(countkey += 1);
-        });
-      });
+      // var countkey = 0;
+      // $(document).ready(function(){
+      //   $("input").keypress(function(){
+      //       $("span").text(countkey += 1);
+      //   });
+      // });
 
     //============================================
     //count user click numbers
-      var count=0;
-      function mouseDown() {
-        count++;
-      }
+      // var count=0;
+      // function mouseDown() {
+      //   count++;
+      // }
     //=============================================
 
     </script>
@@ -677,6 +676,6 @@
     <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyC_aOE6jvjAp5oWwNPT5Fgn6kukWFRphvQ&signed_in=true&libraries=places&callback=initMap"
     async defer></script>
 
-    <p>Keypresses: <span>0</span></p>
+
   </body>
 </html>
