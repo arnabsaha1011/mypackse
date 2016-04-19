@@ -12,4 +12,4 @@ This solution developed by HTML, JavaScript, CSS and based on Google Maps JavaSc
 
 ##Quick Demo
 
-![ScreenShot](https://github.com/arnabsaha1011/mypackse/blob/master/Mar%201/Solution2/snapshot.png)
+![alt tag](https://github.com/arnabsaha1011/mypackse/blob/master/Mar%201/Solution2/solution2.gif)
