@@ -192,7 +192,7 @@ def dumpMilestone(u,milestones,token):
     return False
   except Exception as e:
     print(u)
-    p(e)
+    rint(e)
     print("other Contact TA")
     return False
 
