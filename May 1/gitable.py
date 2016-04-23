@@ -47,7 +47,7 @@ def secs(d0):
   return delta.total_seconds()
  
 def dump1(u,issues):
-  token = "f5301f854450c086d7b523ac8119e0b46444d3c9" # <===
+  token = "5b4be325cd0ff1708d75572053f387363ee16499" # <===
   request = urllib2.Request(u, headers={"Authorization" : "token "+token})
   v = urllib2.urlopen(request).read()
   w = json.loads(v)

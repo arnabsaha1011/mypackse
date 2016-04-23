@@ -4,19 +4,19 @@ import java.sql.*;
 public class DatabaseJAVA {
 
     static final String jdbcURL 
-	= "jdbc:oracle:thin:@ora.csc.ncsu.edu:1521:orcl";
+	= "jdbc:oracle:thin:@127.0.0.1:1521:orcl";
 
     public static void main(String[] args) {
         try {
 
             // Load the driver. This creates an instance of the driver
-	    // and calls the registerDriver method to make Oracle Thin
-	    // driver available to clients.
+	        // and calls the registerDriver method to make Oracle Thin
+	        // driver available to clients.
 
-            Class.forName("oracle.jdbc.driver.OracleDriver");
+            Class.forName("oracle.jdbc.OracleDriver");
 
-	        String user = "ychen71";	// For example, "jsmith"
-	        String passwd = "200099159";	// Your 9 digit student ID number
+	        String user = "asaha1";	// For example, "jsmith"
+	        String passwd = "";	// Your 9 digit student ID number
 
 
             Connection conn = null;
@@ -34,6 +34,7 @@ public class DatabaseJAVA {
 		// SQL statements to the DBMS
 
 		stmt = conn.createStatement();
+	/*
 		String sid = "S1";
         System.out.println("Reserved Resources");
         //reserved book
@@ -51,6 +52,7 @@ public class DatabaseJAVA {
             System.out.println(sid+" "+sb_bid+" "+show_bisbn+" "+show_btitle+" "+show_bedition+" "+show_bauthor+" "+show_bpublisher+" "+show_byear+" "+show_blocation);
 
 		}
+	*/
 
             } finally {
                 close(rs);
