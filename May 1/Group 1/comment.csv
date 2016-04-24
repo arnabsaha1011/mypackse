@@ -1,0 +1,48 @@
+id,user/login,user/id,created_at,updated_at,COMMENT_DESC
+172395092,arnabsaha1011,5965776,2016-01-17T23:25:30Z,2016-01-17T23:26:28Z,"1. We can find the problems one has to deal with using different map applications.2. Count the number of clicks. Less number of clicks is better."
+172395519,arnabsaha1011,5965776,2016-01-17T23:32:44Z,2016-01-17T23:32:44Z,Travelling salesman problem
+172962390,arnabsaha1011,5965776,2016-01-19T19:39:04Z,2016-01-19T19:39:04Z,"Didn't find any essential disadvantages in the web but found a paper which can be interesting while writing documents. ""Crowdsensing Maps of On-Street Parking Spaces""."
+175900764,arnabsaha1011,5965776,2016-01-27T22:50:16Z,2016-01-27T22:50:16Z,Can you update the results from all the surveys onto a file on github?
+175913671,YiqiaoXu-Joe,16145028,2016-01-27T23:46:04Z,2016-01-27T23:46:04Z,Sure. I'll do it.
+176214296,arnabsaha1011,5965776,2016-01-28T14:42:29Z,2016-01-28T14:42:43Z,Added the introduction to the docs
+177028460,arnabsaha1011,5965776,2016-01-30T00:16:15Z,2016-01-30T00:16:15Z,Added description of the problems
+177622466,YiqiaoXu-Joe,16145028,2016-01-31T21:40:22Z,2016-01-31T21:40:22Z,"[SE .pdf](https://github.com/arnabsaha1011/mypackse/files/111523/SE.pdf)"
+180513756,asaha1,13953290,2016-02-05T19:32:41Z,2016-02-05T19:32:41Z,"I know Joe has configured git with C9. For others please complete this part. I have a midterm and 2 assignments due next week so I am taking the weekend off from this project. Also, use Github to indicate how much progress you guys have done. Song and Ye don't have any Github commits as of yet, so try to focus on that as well."
+180597883,YiqiaoXu-Joe,16145028,2016-02-05T22:25:14Z,2016-02-05T22:25:14Z,I just put my solutions. But it might be changed these days whenever I come up a new idea.
+180795386,sju88,16637176,2016-02-06T15:45:22Z,2016-02-06T15:45:22Z,I have configured with C9.
+181178211,yemao616,16628107,2016-02-08T03:13:40Z,2016-02-08T03:13:40Z,I have configured git with Cloud 9.
+182135223,YiqiaoXu-Joe,16145028,2016-02-09T23:42:09Z,2016-02-09T23:42:09Z,All the solutions can be found in mar16 folder
+183781717,asaha1,13953290,2016-02-14T00:51:52Z,2016-02-14T00:51:52Z,I've made an android application which can search for a location and show using google maps. Next up Itinerary and time addition
+183967813,YiqiaoXu-Joe,16145028,2016-02-14T20:18:10Z,2016-02-14T20:18:10Z,"http://www.w3schools.com/googleapi/google_maps_basic.asp.Here is a tutorial of Google Maps API for website.It seems like javascript API."
+185269285,asaha1,13953290,2016-02-17T15:56:52Z,2016-02-17T15:57:21Z,Refer to this [link](http://stackoverflow.com/questions/35459877/github-commit-and-import-project-from-a-folder-in-a-repository/35460042#35460042) for solution
+185269572,YiqiaoXu-Joe,16145028,2016-02-17T15:57:24Z,2016-02-17T15:57:34Z,Each branch seems has everything we have in master branch. That's really bad.
+185270802,asaha1,13953290,2016-02-17T15:59:39Z,2016-02-17T15:59:39Z,Check out the first solution which is great. You create a separate repo and then create a symbolic link to refer to that repo. Just awesome. I'm using this for sol2.
+186945730,asaha1,13953290,2016-02-21T23:48:09Z,2016-02-21T23:48:09Z,Currently it can take in two places and search for it and draw a line between them
+186947654,asaha1,13953290,2016-02-21T23:54:27Z,2016-02-21T23:54:27Z,Currently lines can be drawn between two places
+188271209,asaha1,13953290,2016-02-24T14:11:15Z,2016-02-24T14:11:15Z,This is the funniest issue ever
+188816240,asaha1,13953290,2016-02-25T14:46:46Z,2016-02-25T14:46:46Z,Couldn't configure any so decided to work on it from scratch
+188816427,asaha1,13953290,2016-02-25T14:47:26Z,2016-02-25T14:47:26Z,Finally managed to work on multiple projects under different folders using git shell
+188873329,yemao616,16628107,2016-02-25T16:48:43Z,2016-02-25T16:48:43Z,how to keep the marker?
+188923543,yemao616,16628107,2016-02-25T18:42:59Z,2016-02-25T18:42:59Z,done! 
+188923739,yemao616,16628107,2016-02-25T18:43:43Z,2016-02-25T18:43:43Z,fixed the marker problem!
+188924279,yemao616,16628107,2016-02-25T18:45:33Z,2016-02-25T18:45:33Z,done!
+188924390,yemao616,16628107,2016-02-25T18:45:59Z,2016-02-25T18:45:59Z,Goes well!
+188924732,yemao616,16628107,2016-02-25T18:46:43Z,2016-02-25T18:46:43Z,I think we have solved it.
+188926395,yemao616,16628107,2016-02-25T18:51:07Z,2016-02-25T18:51:07Z,"1, 2, 3, 4 and 7 had been solved yet."
+189993578,asaha1,13953290,2016-02-29T01:48:46Z,2016-02-29T01:48:46Z,"Things to do this week:LayoutMultiple places directions in the map"
+190001797,asaha1,13953290,2016-02-29T02:18:18Z,2016-02-29T02:18:18Z,It displays real path now
+191285637,asaha1,13953290,2016-03-02T15:22:40Z,2016-03-02T15:22:40Z,"Currently multiple places can be added and deleted.Shows the map with actual path."
+191322097,asaha1,13953290,2016-03-02T16:50:40Z,2016-03-02T16:50:40Z,Currently working on the layout
+191895541,asaha1,13953290,2016-03-03T18:26:28Z,2016-03-03T18:26:28Z,@yemao616 Finish this work by today please
+191913879,yemao616,16628107,2016-03-03T18:59:37Z,2016-03-03T18:59:37Z,done
+191921139,asaha1,13953290,2016-03-03T19:14:58Z,2016-03-03T19:14:58Z,I added a point to it. Maybe you want to take a look.
+191921464,asaha1,13953290,2016-03-03T19:15:28Z,2016-03-03T19:15:28Z,Finished these slides
+198984357,yemao616,16628107,2016-03-20T18:35:38Z,2016-03-20T18:35:38Z,"Done with calculation, but how to display it properly?"
+205114737,asaha1,13953290,2016-04-04T03:10:40Z,2016-04-04T03:10:40Z,Didn't work
+206030078,sju88,16637176,2016-04-05T23:18:21Z,2016-04-05T23:18:21Z,start solution 2 test
+206505835,yemao616,16628107,2016-04-06T18:32:05Z,2016-04-06T18:32:05Z,Done!
+206622397,asaha1,13953290,2016-04-06T23:39:58Z,2016-04-06T23:39:58Z,"Conducted box plots, anova and t tests"
+206622478,asaha1,13953290,2016-04-06T23:40:25Z,2016-04-06T23:40:25Z,Abstract and results done
+206622522,asaha1,13953290,2016-04-06T23:40:45Z,2016-04-06T23:40:45Z,data collected
+210244668,asaha1,13953290,2016-04-15T01:52:11Z,2016-04-15T01:52:11Z,Fixed it
+212167408,asaha1,13953290,2016-04-19T23:15:39Z,2016-04-19T23:15:39Z,Not fixing.

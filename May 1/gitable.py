@@ -52,7 +52,7 @@ def dump1(u,issues, token):
   request = urllib2.Request(u, headers={"Authorization" : "token "+token})
   v = urllib2.urlopen(request).read()
   w = json.loads(v)
-  # pprint.pprint(w)
+  pprint.pprint(w)
   if not w: return False
   for event in w:
     issue_id = event['issue']['number']
@@ -83,7 +83,7 @@ def dumpMilestone(u,milestones,token):
       print("404 Contact TA")
     return False
   except Exception as e:
-    print(u)
+   # print(u)
     print(e)
     print("other Milestone Contact TA")
     return False
@@ -184,7 +184,7 @@ def dump(u,issues, token):
     return False
 
 def launchDump():
-  token = "f6538126b4e3d30ea62f3b41538917a50eb1b2ef" # <=== arnab's token
+  token = "6669723ae892a17127edb0a6ab043af59fdbd851" # <=== arnab's token
   nameNum = 1
   nameMap = dict()
 
@@ -194,7 +194,7 @@ def launchDump():
   page = 1
   milestones = []
   while(True):
-    url = 'https://api.github.com/repos/arnabsaha1011/mypackse/milestones?state=all'
+    url = 'https://api.github.com/repos/arnabsaha1011/mypackse/milestones?page='+ str(page)
     doNext = dumpMilestone(url, milestones, token)
     print("milestone "+ str(page))
     page += 1
