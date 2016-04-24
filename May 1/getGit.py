@@ -261,15 +261,15 @@ def launchDump():
   milestoneMap = dict()
 
   page = 1
-  milestones = []
-  print('getting records from '+repo)
-  while(True):
-    url = 'https://api.github.com/repos/'+repo+'/milestones/' + str(page)
-    doNext = dumpMilestone(url, milestones, token)
-    print("milestone "+ str(page))
-    page += 1
-    if not doNext : break
-  page = 1
+  # milestones = []
+  # print('getting records from '+repo)
+  # while(True):
+  #   url = 'https://api.github.com/repos/'+repo+'/milestones/' + str(page)
+  #   doNext = dumpMilestone(url, milestones, token)
+  #   print("milestone "+ str(page))
+  #   page += 1
+  #   if not doNext : break
+  # page = 1
   issues = dict()
   while(True):
     url = 'https://api.github.com/repos/'+repo+'/issues/events?page=' + str(page)
@@ -278,21 +278,21 @@ def launchDump():
     page += 1
     if not doNext : break
   page = 1
-  comments = []
-  while(True):
-    url = 'https://api.github.com/repos/'+repo+'/issues/comments?page='+str(page)
-    doNext = dumpComments(url, comments, token)
-    print("comments page "+ str(page))
-    page += 1
-    if not doNext : break
-  page = 1
-  commits = []
-  while(True):
-    url = 'https://api.github.com/repos/'+repo+'/commits?page=' + str(page)
-    doNext = dumpCommit(url, commits, token)
-    print("commit page "+ str(page))
-    page += 1
-    if not doNext : break
+  # comments = []
+  # while(True):
+  #   url = 'https://api.github.com/repos/'+repo+'/issues/comments?page='+str(page)
+  #   doNext = dumpComments(url, comments, token)
+  #   print("comments page "+ str(page))
+  #   page += 1
+  #   if not doNext : break
+  # page = 1
+  # commits = []
+  # while(True):
+  #   url = 'https://api.github.com/repos/'+repo+'/commits?page=' + str(page)
+  #   doNext = dumpCommit(url, commits, token)
+  #   print("commit page "+ str(page))
+  #   page += 1
+  #   if not doNext : break
   issueTuples = []
   eventTuples = []
   milestoneTuples = []
@@ -300,12 +300,12 @@ def launchDump():
   commitTuples = []
 
 
-  for milestone in milestones:
-    if not milestone.user in nameMap:
-      nameMap[milestone.user] = group+'/user'+str(nameNum)
-      nameNum+=1
-    milestoneMap[milestone.m_title] = milestone.m_id
-    milestoneTuples.append([milestone.m_id, milestone.m_title, milestone.m_description, milestone.created_at, milestone.due_at, milestone.closed_at, nameMap[milestone.user], milestone.ident])
+  # for milestone in milestones:
+  #   if not milestone.user in nameMap:
+  #     nameMap[milestone.user] = group+'/user'+str(nameNum)
+  #     nameNum+=1
+  #   milestoneMap[milestone.m_title] = milestone.m_id
+  #   milestoneTuples.append([milestone.m_id, milestone.m_title, milestone.m_description, milestone.created_at, milestone.due_at, milestone.closed_at, nameMap[milestone.user], milestone.ident])
 
 
   for issue, issueObj in issues.iteritems():
@@ -323,17 +323,17 @@ def launchDump():
       eventTuples.append([issue, event.when, event.action, nameMap[event.what] if event.action == 'assigned' else event.what, nameMap[event.user], event.milestone if 'milestone' in event.__dict__ else None, event.ident])
     #print('')
 
-  for comment in comments:
-    if not comment.user in nameMap:
-      nameMap[comment.user] = group+'/user'+str(nameNum)
-      nameNum+=1
-    commentTuples.append([comment.issue, nameMap[comment.user], comment.created_at, comment.updated_at, comment.text, comment.ident])
+  # for comment in comments:
+  #   if not comment.user in nameMap:
+  #     nameMap[comment.user] = group+'/user'+str(nameNum)
+  #     nameNum+=1
+  #   commentTuples.append([comment.issue, nameMap[comment.user], comment.created_at, comment.updated_at, comment.text, comment.ident])
 
-  for commit in commits:
-    if not commit.user in nameMap:
-      nameMap[commit.user] = group+'/user'+str(nameNum)
-      nameNum+=1
-    commitTuples.append([commit.time, commit.sha, nameMap[commit.user], commit.message])
+  # for commit in commits:
+  #   if not commit.user in nameMap:
+  #     nameMap[commit.user] = group+'/user'+str(nameNum)
+  #     nameNum+=1
+  #   commitTuples.append([commit.time, commit.sha, nameMap[commit.user], commit.message])
 
 
 
