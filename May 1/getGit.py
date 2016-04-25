@@ -182,19 +182,19 @@ def dumpComments(u,comments, token):
     print("Contact TA")
     return False
 
-def dumpMilestone(u,milestones,token):
-  try:
-    return dumpMilestone1(u, milestones,token)
-  except urllib2.HTTPError as e:
-    if e.code != 404:
-      print(e)
-      print("404 Contact TA")
-    return False
-  except Exception as e:
-    print(u)
-    rint(e)
-    print("other Contact TA")
-    return False
+# def dumpMilestone(u,milestones,token):
+#   try:
+#     return dumpMilestone1(u, milestones,token)
+#   except urllib2.HTTPError as e:
+#     if e.code != 404:
+#       print(e)
+#       print("404 Contact TA")
+#     return False
+#   except Exception as e:
+#     print(u)
+#     rint(e)
+#     print("other Contact TA")
+#     return False
 
 def dump(u,issues,token):
   try:
