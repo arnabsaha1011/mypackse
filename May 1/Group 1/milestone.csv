@@ -1,12 +1,12 @@
-id,identifier,number,title,description,creator/login,creator/id,open_issues,closed_issues,state,created_at,updated_at,due_on,closed_at
-1,1588944,6,Solution 2,All work in Solution 2,asaha1,13953290,0,8,closed,2016-02-17T17:01:50Z,2016-04-24T00:48:23Z,,2016-04-24T00:48:23Z
-2,1588946,7,Solution 3,All work in Solution 3,asaha1,13953290,0,8,closed,2016-02-17T17:02:04Z,2016-04-24T00:48:26Z,,2016-04-24T00:48:26Z
-3,1558869,1,1-Feb,,asaha1,13953290,0,9,closed,2016-02-02T15:06:17Z,2016-04-24T01:08:17Z,2016-02-01T05:00:00Z,2016-04-24T01:08:17Z
-4,1588943,5,Solution 1,"1. Search a location
+identifier,number,title,description,creator/login,creator/id,open_issues,closed_issues,state,created_at,updated_at,due_on,closed_at
+1588944,6,Solution 2,All work in Solution 2,asaha1,13953290,0,8,closed,2016-02-17T17:01:50Z,2016-04-24T00:48:23Z,,2016-04-24T00:48:23Z
+1588946,7,Solution 3,All work in Solution 3,asaha1,13953290,0,8,closed,2016-02-17T17:02:04Z,2016-04-24T00:48:26Z,,2016-04-24T00:48:26Z
+1558869,1,1-Feb,,asaha1,13953290,0,9,closed,2016-02-02T15:06:17Z,2016-04-24T01:08:17Z,2016-02-01T05:00:00Z,2016-04-24T01:08:17Z
+1588943,5,Solution 1,"1. Search a location
 2. add place in search
 3. draw straight line
 4. get real path",asaha1,13953290,0,0,closed,2016-02-17T17:01:22Z,2016-04-24T01:08:19Z,2016-02-25T05:00:00Z,2016-04-24T01:08:19Z
-5,1558872,2,Mar 1 http://se16.unbox.org/project/mar1.md,"##Goals
+1558872,2,Mar 1 http://se16.unbox.org/project/mar1.md,"##Goals
 
 To implement three different solutions to the problem identified in January.
 To implement the telemetry (data collection) required to assess if any of these three proposed solutions actually matter.
@@ -24,5 +24,5 @@ And April will be building tools to reflect on how effective are teams at buildi
 So this month is all about building tools, not trials of these tools. You succeed this month if some code is running (and not that it has been tested on some sample population).
 
 Next month (March) expect dramatic changes to your code base when your user trials start and you realize that you should be doing XYZ not ABC. So be prepared to be very agile in March.",asaha1,13953290,0,17,closed,2016-02-02T15:07:25Z,2016-04-24T01:08:22Z,2016-03-01T05:00:00Z,2016-04-24T01:08:22Z
-6,1558875,3,1-Apr,,asaha1,13953290,0,25,closed,2016-02-02T15:07:32Z,2016-04-24T01:08:24Z,2016-04-01T04:00:00Z,2016-04-24T01:08:24Z
-7,1558878,4,1-May,,asaha1,13953290,2,16,open,2016-02-02T15:07:45Z,2016-04-22T15:12:50Z,2016-05-01T04:00:00Z,
+1558875,3,1-Apr,,asaha1,13953290,0,25,closed,2016-02-02T15:07:32Z,2016-04-24T01:08:24Z,2016-04-01T04:00:00Z,2016-04-24T01:08:24Z
+1558878,4,1-May,,asaha1,13953290,2,16,open,2016-02-02T15:07:45Z,2016-04-22T15:12:50Z,2016-05-01T04:00:00Z,
