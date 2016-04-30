@@ -1,14 +1,14 @@
-Long Open Issues (>20 days)
-Short Open Issues (<1 hr)
-Issues Missing Milestones
-Issues Missing Assignees
-Equal number of Issue Assignees
-Equal number of Issues posted by each user
-Number of comments per issue
+Long Open Issues (>20 days) (Done)
+Short Open Issues (<1 hr) (Done)
+Issues Missing Milestones (Done)
+Issues Missing Assignees (Done)
+Equal number of Issue Assignees (Done)
+Equal number of Issues posted by each user (Done)
+Number of comments per issue (Done)
 Number of comments per user (Done)
-Time taken for fixing bugs (new)
-Time taken for creating enhancements (new)
+Time taken for fixing bugs (new) (Done)
+Time taken for creating enhancements (new) (Done)[It would have been much better if we could link it to the commit but beyond the scope the project]
 Number of commits per user (Done)
-Active number of days per repo (new) = distinct days of commits
-Active number of days per user (new) = distinct days of commits per user
+Active number of days per repo (new)(Done) = distinct days of commits
+Active number of days per user (new)(Done) = distinct days of commits per user
 Number of days worked per milestone (new) = distinct days of commits per milestone
