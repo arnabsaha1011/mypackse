@@ -157,7 +157,13 @@ SELECT ISSUE_ID, TIMESTAMPDIFF(MINUTE,ISSUE_CREATE_TIME, ISSUE_CLOSE_TIME ), USE
 
 
 # Issues Missing Milestones
-select ISSUE_ID, ISSUE_USER_NAME, USER_GROUP_NUMBER from ISSUE join USER on USER_ID = ISSUE_USER_ID where ISSUE_MILESTONE_ID = "" order by USER_GROUP_NUMBER;
+select 
+    sum(case when ISSUE_MILESTONE_ID = "" then 1 else 0 end) Milestone_Missing,
+        count(ISSUE_ID) total,
+         USER_GROUP_NUMBER
+from ISSUE join 
+USER on USER_ID = ISSUE_USER_ID
+group by  USER_GROUP_NUMBER order by USER_GROUP_NUMBER;
 
 # Issues Missing Milestones(Jan)
 select ISSUE_ID, ISSUE_USER_NAME, USER_GROUP_NUMBER from ISSUE join USER on USER_ID = ISSUE_USER_ID where ISSUE_MILESTONE_ID = "" and ISSUE_CREATE_TIME <= '2016-2-1' order by USER_GROUP_NUMBER;
@@ -177,7 +183,13 @@ USER on USER_ID = ISSUE_USER_ID where ISSUE_MILESTONE_ID = "" and ISSUE_CREATE_T
 
 
 # Issues Missing Assignees
-select ISSUE_ID, ISSUE_USER_NAME, USER_GROUP_NUMBER from ISSUE join USER on USER_ID = ISSUE_USER_ID where ISSUE_ASSIGNEE_ID = "" order by USER_GROUP_NUMBER;
+select 
+    sum(case when ISSUE_ASSIGNEE_ID = "" then 1 else 0 end) Assignee_Missing,
+        count(ISSUE_ID) total,
+       USER_GROUP_NUMBER
+from ISSUE join 
+USER on USER_ID = ISSUE_USER_ID
+group by USER_GROUP_NUMBER order by USER_GROUP_NUMBER;
 
 # Issues Missing Assignees(Jan)
 select ISSUE_ID, ISSUE_USER_NAME, USER_GROUP_NUMBER from ISSUE join USER on USER_ID = ISSUE_USER_ID where ISSUE_ASSIGNEE_ID = "" and ISSUE_CREATE_TIME <= '2016-2-1' order by USER_GROUP_NUMBER;
