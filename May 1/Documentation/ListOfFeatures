@@ -1,14 +1,54 @@
-Long Open Issues (>20 days) (Done)
-Short Open Issues (<1 hr) (Done)
-Issues Missing Milestones (Done)
-Issues Missing Assignees (Done)
-Equal number of Issue Assignees (Done)
-Equal number of Issues posted by each user (Done)
-Number of comments per issue (Done)
-Number of comments per user (Done)
-Time taken for fixing bugs (new) (Done)
-Time taken for creating enhancements (new) (Done)[It would have been much better if we could link it to the commit but beyond the scope the project]
-Number of commits per user (Done)
-Active number of days per repo (new)(Done) = distinct days of commits
-Active number of days per user (new)(Done) = distinct days of commits per user
-Number of days worked per milestone (new) = distinct days of commits per milestone
+-Long Open Issues (>15 days) (Done)
+-Short Open Issues (<30 mins) (Done)
+-Issues Without Milestones (Done)
+-Issues Without Assignees (Done)
+-Issues Missing Milestone Due Date (Done)
+-Equal number of Issue Assignees (Done)
+-Equal number of Issues posted by each user (Done)
+-Average number of comments per issue (Done)
+-Number of comments per user (Done)
+-Time taken for fixing bugs (new) (Done)
+-Time taken for creating enhancements (new) (Done)[It would have been much better if we could link it to the commit but beyond the scope the project]
+-Number of commits per user (Done)
+-Active number of days per repo (new)(Done) = distinct days of commits
+-Active number of days per user (new)(Done) = distinct days of commits per user
+Spread of commit history (new) (Done)
+
+
+
+Bad Smell:
+
+1. poor budget
+    a. Long Open Issue(the design of each phase may not have good boundary)
+    b. Short Open Issues(as below)
+    c. Issues Missing Milestone Due Date(the design of each phase may be not suitable. Some phase may have a lot of work, but some may have fewer)
+    d. Time taken for fixing bugs(if it takes too long, the first design is not good)
+    e. Time taken for creating enhancements(if it takes too long, the first design is not good)
+    f. Active number of days per repo
+    
+
+2. poor team cohesiveness
+    a. Issues Without Assignees(they don't know which one to assign or they only work themselves)
+    b. Average number of comments per issue(how people follows issue and how they are positive to project)
+    c. Number of comments per user(If one is very low, he may be low participation)
+    d. Equal number of Issue Assignees(participation)
+    e. Equal number of Issues posted by each user(participation)
+    f. Number of commits per user
+    
+3. poor issue usage(make others confused and affect the whole project because github is an important to manage project, be good at github is essential)
+    a. Issues Without Milestones
+    b. Issues Without Assignees
+    
+4. poor milestone usage
+    a. Issues Without Milestones
+    b. Issues Missing Milestone Due Date(the milestone may be not suitable)
+    c. Active number of days per repo
+    
+5. Dictator(everything is done by one person and every others rely on this person)
+    a. Equal number of Issue Assignees
+    b. Equal number of Issues posted by each user
+    c. Number of comments per user
+    d. Number of commits per user
+    e. Active number of days per user
+
+6. 
